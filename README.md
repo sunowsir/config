@@ -22,6 +22,7 @@
     * `netwrok-manager-applet`
     * `nm-connection-editor`
     * `nerd-fonts-complete`
+    * `flameshot`
 
 
 
