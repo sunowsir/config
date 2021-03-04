@@ -23,6 +23,7 @@
     * `nm-connection-editor`
     * `nerd-fonts-complete`
     * `flameshot`
+    * `libxft-bgra`
 
 
 
