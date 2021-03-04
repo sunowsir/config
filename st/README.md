@@ -1,4 +1,4 @@
 ## st -- simple terminal ##
 
 ---
-* fork from (suckless)[git.suckless.org/st] and **theniceboy**
+* fork from [suckless](https://st.suckless.org/) and **theniceboy**
