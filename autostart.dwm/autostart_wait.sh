@@ -1,5 +1,7 @@
 #!/bin/bash
 
-sleep 10
+sleep 5
+
 #xmodmap ~/.Xmodmap &
-#fcitx &
+fcitx5 &
+/bin/bash ~/.config/autostart.dwm/speedtest_run.sh &
