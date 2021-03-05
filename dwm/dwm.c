@@ -198,7 +198,7 @@ static void detachstack(Client *c);
 static Monitor *dirtomon(int dir);
 static void drawbar(Monitor *m);
 static void drawbars(void);
-static int drawstatusbar(Monitor *m, int bh, char* text);
+static int drawstatusbar(Monitor *m, int stw, int bh, char* stext);
 static void enqueue(Client *c);
 static void enqueuestack(Client *c);
 static void enternotify(XEvent *e);
@@ -875,7 +875,7 @@ dirtomon(int dir)
 }
 
 int
-drawstatusbar(Monitor *m, int bh, char* stext) {
+drawstatusbar(Monitor *m, int stw, int bh, char* stext) {
 	int ret, i, w, x, len;
 	short isCode = 0;
 	char *text;
@@ -913,7 +913,7 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 	text = p;
 
 	w += 2; /* 1px padding on both sides */
-	ret = x = m->ww - w;
+	ret = x = m->ww - w - stw;
 
 	drw_setscheme(drw, scheme[LENGTH(colors)]);
 	drw->scheme[ColFg] = scheme[SchemeNorm][ColFg];
@@ -939,13 +939,13 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 					char buf[8];
 					memcpy(buf, (char*)text+i+1, 7);
 					buf[7] = '\0';
-					drw_clr_create(drw, &drw->scheme[ColFg], buf, statusalpha);
+					drw_clr_create(drw, &drw->scheme[ColFg], buf, baralpha);
 					i += 7;
 				} else if (text[i] == 'b') {
 					char buf[8];
 					memcpy(buf, (char*)text+i+1, 7);
 					buf[7] = '\0';
-					drw_clr_create(drw, &drw->scheme[ColBg], buf, statusalpha);
+					drw_clr_create(drw, &drw->scheme[ColBg], buf, baralpha);
 					i += 7;
 				} else if (text[i] == 'd') {
 					drw->scheme[ColFg] = scheme[SchemeNorm][ColFg];
@@ -994,7 +994,7 @@ drawbar(Monitor *m)
 
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
-		tw = m->ww - drawstatusbar(m, bh, stext);
+		tw = m->ww - drawstatusbar(m, stw, bh, stext);
 	}
 
 	resizebarwin(m);
