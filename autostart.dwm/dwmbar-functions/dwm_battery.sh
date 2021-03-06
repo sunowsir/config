@@ -12,12 +12,12 @@ dwm_battery () {
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
         if [ "$STATUS" = "Discharging" ]; then
-            printf "🔋 %s%% " "$CHARGE" 
+            printf "🔋 %s%%" "$CHARGE" 
         else
-            printf "🔌 %s%% " "$CHARGE"
+            printf "🔌 %s%%" "$CHARGE"
         fi
     else
-        printf "BAT %s%% %s" "$CHARGE" "$STATUS"
+        printf "BAT %s%%" "$CHARGE" 
     fi
     printf "%s\n" "$SEP2"
 }
