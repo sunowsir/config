@@ -979,6 +979,7 @@ drawstatusbar(Monitor *m, int stw, int bh, char* stext) {
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	free(p);
 
+
 	return ret;
 }
 
@@ -1041,7 +1042,7 @@ drawbar(Monitor *m)
 					}
 					remainder--;
 				}
-				drw_text(drw, x, 0, tabw, bh, lrpad / 2, c->name, 0);
+				drw_text(drw, x, 0, tabw + stw + lrpad / 2, bh, lrpad / 2, c->name, 0);
 				x += tabw;
 			}
 		} else {
