@@ -13,6 +13,7 @@ picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -
 # /bin/bash ~/.config/autostart.dwm/setxmodmap-colemak.sh &
 
 nm-applet &
+blueman-applet &
 
 # xfce4-power-manager &
 # xfce4-volumed-pulse &

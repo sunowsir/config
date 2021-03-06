@@ -24,6 +24,13 @@
     * `nerd-fonts-complete`
     * `flameshot`
     * `libxft-bgra`
+    * `tlp`
+    * `bluez`
+    * `bluez-utils`
+    * `bluez-utils-compat`
+    * `blueman`
+    * `pulseaudio`
+    * `pulseaudio-bluetooth`
 
 
 

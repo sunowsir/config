@@ -11,13 +11,13 @@ dwm_alsa () {
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
         if [ "$VOL" -eq 0 ]; then
-            printf "🔇"
+            printf "\U1F507"
         elif [ "$VOL" -gt 0 ] && [ "$VOL" -le 33 ]; then
-            printf "🔈 %s%%" "$VOL"
+            printf "\U1F508 %s%%" "$VOL"
         elif [ "$VOL" -gt 33 ] && [ "$VOL" -le 66 ]; then
-            printf "🔉 %s%%" "$VOL"
+            printf "\U1F509 %s%%" "$VOL"
         else
-            printf "🔊 %s%%" "$VOL"
+            printf "\U1F50A %s%%" "$VOL"
         fi
     else
         if [ "$VOL" -eq 0 ]; then
