@@ -30,15 +30,15 @@ source "$DIR/dwmbar-functions/dwm_memory.sh"
 # 文本颜色：^cRGB颜色值^
 # 背景颜色：^bRGB颜色值^
 # xsetroot -name "^b#fff929^^c#000000^$(dwm_memory)^c#fff929^$(echo -e "\ue0b0")   ^b#c20000^^c#000000^$(dwm_network)^c#c20000^$(echo -e "\ue0b0")              "
-xsetroot -name "\
+xsetroot -name " \
 ^b#fff929^^c#000000^ $(dwm_memory) \
-^c#fff929^^b#c20000^$(echo -e "\ue0b0")\
+^c#fff929^^b#c20000^$(echo -e "\ue0b0") \
 ^c#000000^^b#c20000^ $(dwm_transmission) \
-^c#c20000^^b#8A2BE2^$(echo -e "\ue0b0")\
+^c#c20000^^b#8A2BE2^$(echo -e "\ue0b0") \
 ^c#000000^^b#8A2BE2^ $(dwm_alsa) \
-^c#8A2BE2^^b#00FA9A^$(echo -e "\ue0b0")\
+^c#8A2BE2^^b#00FA9A^$(echo -e "\ue0b0") \
 ^c#000000^^b#00FA9A^ $(dwm_battery) \
-^c#00FA9A^^b#8B8989^$(echo -e "\ue0b0")\
+^c#00FA9A^^b#8B8989^$(echo -e "\ue0b0") \
 ^c#000000^^b#8B8989^ $(dwm_date) \
 "
 
