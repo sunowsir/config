@@ -88,22 +88,20 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "google-chrome-stable", NULL };
+static const char *changelightupcmd[] = { "xbacklight", "-inc", "10", NULL };
+static const char *changelightdowncmd[] = { "xbacklight", "-dec", "10", NULL };
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x24", NULL };
+static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 
 static const char *upvol[]   = { "/home/sunowsir/.config/autostart.dwm/vol-up.sh",  NULL };
 static const char *downvol[] = { "/home/sunowsir/.config/autostart.dwm/vol-down.sh",  NULL };
 static const char *mutevol[] = { "/home/sunowsir/.config/autostart.dwm/vol-toggle.sh",  NULL };
-
 static const char *wpcmd[]  = { "/home/sunowsir/.config/autostart.dwm/wp-change.sh", NULL };
 static const char *sktogglecmd[]  = { "/home/sunowsir/.config/autostart.dwm/sck-tog.sh", NULL };
-static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x24", NULL };
-
 static const char *setcolemakcmd[]  = { "/home/sunowsir/.config/autostart.dwm/setxmodmap-colemak.sh", NULL };
 static const char *setqwertycmd[]  = { "/home/sunowsir/.config/autostart.dwm/setxmodmap-qwerty.sh", NULL };
-
 static const char *suspendcmd[]  = { "/home/sunowsir/.config/autostart.dwm/suspend.sh", NULL };
-
-static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 
 static Key keys[] = {
 	/* modifier            key                      function        argument */
@@ -117,6 +115,8 @@ static Key keys[] = {
 	{ 0,                   XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },
 	{ 0,                   XF86XK_AudioMute,        spawn,          {.v = mutevol } },
 	{ 0,                   XF86XK_AudioRaiseVolume, spawn,          {.v = upvol   } },
+	{ 0,                   XF86XK_MonBrightnessUp,  spawn,          {.v = changelightupcmd } },
+	{ 0,                   XF86XK_MonBrightnessDown,spawn,          {.v = changelightdowncmd } },
 	{ MODKEY,              XK_bracketleft,          spawn,          {.v = downvol } },
 	{ MODKEY,              XK_backslash,            spawn,          {.v = mutevol } },
 	{ MODKEY,              XK_bracketright,         spawn,          {.v = upvol   } },

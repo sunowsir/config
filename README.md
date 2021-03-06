@@ -31,6 +31,7 @@
     * `blueman`
     * `pulseaudio`
     * `pulseaudio-bluetooth`
+    * `acpilight`
 
 
 
