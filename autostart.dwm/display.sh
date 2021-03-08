@@ -3,23 +3,24 @@
 sleep 1
 
 function set_display() {
-    cmd_line="$(xrandr | tr -s ' ' | sed 's/^\ //g' | awk '{
+    local awk_reso_flag=1;
+    
+    xrandr | tr -s ' ' | sed 's/^\ //g' | awk -v reso_flag="${awk_reso_flag}" '
+    {
         if ($2 != "disconnected") { 
-            if ($2 == "connected") {
-                printf("Device=%s; Resolution=", $1);
+            if ($2 == "connected" && reso_flag == 1) {
+                reso_flag = 0;
+                device = $1;
             } 
-            if ($1 ~ /^[0-9]*x[0-9]*/) {
-                print $0
+            if ($1 ~ /^[0-9]*x[0-9]*/ && reso_flag == 0) {
+                reso_flag = 1;
+                resolution = $1;
+                cmd = sprintf("xrandr --output %s --mode %s", device, resolution);
+                printf("%s\n", cmd);
+                system(cmd);
             } 
         } 
-    }' | grep -Eo '^Device=\S*;\ Resolution=\S*[0-9]*x[0-9]*')"
-
-    for value in $(echo "${cmd_line}" | wc -l)
-    do
-        eval "${cmd_line}"
-        echo "${Device} ${Resolution}"
-        xrandr --output ${Device} --mode ${Resolution}
-    done
+    }' 
 }
 
 # xrandr --auto --output DP-2 --same-as eDP-1 --size 1920x1080
