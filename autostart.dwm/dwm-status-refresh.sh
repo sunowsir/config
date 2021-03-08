@@ -10,27 +10,37 @@ LOC=$(readlink -f "$0")
 DIR=$(dirname "$LOC")
 export IDENTIFIER="unicode"
 
+# shellcheck source=dwmbar-functions/dwm_transmission.sh
 source "$DIR/dwmbar-functions/dwm_transmission.sh"
+
+# shellcheck source=dwmbar-functions/dwm_battery.sh
+source "$DIR/dwmbar-functions/dwm_battery.sh"
+
+# shellcheck source=dwmbar-functions/dwm_alsa.sh
+source "$DIR/dwmbar-functions/dwm_alsa.sh"
+
+# shellcheck source=dwmbar-functions/dwm_date.sh
+source "$DIR/dwmbar-functions/dwm_date.sh"
+
+# shellcheck source=dwmbar-functions/dwm_memory.sh
+source "$DIR/dwmbar-functions/dwm_memory.sh"
+
 # source "$DIR/dwmbar-functions/dwm_cmus.sh"
 # source "$DIR/dwmbar-functions/dwm_resources.sh"
-source "$DIR/dwmbar-functions/dwm_battery.sh"
 # source "$DIR/dwmbar-functions/dwm_mail.sh"
 # source "$DIR/dwmbar-functions/dwm_backlight.sh"
-source "$DIR/dwmbar-functions/dwm_alsa.sh"
 # source "$DIR/dwmbar-functions/dwm_pulse.sh"
 # source "$DIR/dwmbar-functions/dwm_weather.sh"
 # source "$DIR/dwmbar-functions/dwm_vpn.sh"
 # source "$DIR/dwmbar-functions/dwm_network.sh"
 # source "$DIR/dwmbar-functions/dwm_keyboard.sh"
 # source "$DIR/dwmbar-functions/dwm_ccurse.sh"
-source "$DIR/dwmbar-functions/dwm_date.sh"
-source "$DIR/dwmbar-functions/dwm_memory.sh"
 
 
 # 文本颜色：^cRGB颜色值^
 # 背景颜色：^bRGB颜色值^
-# xsetroot -name "^b#fff929^^c#000000^$(dwm_memory)^c#fff929^$(echo -e "\ue0b0")   ^b#c20000^^c#000000^$(dwm_network)^c#c20000^$(echo -e "\ue0b0")              "
 xsetroot -name " \
+^c#8B8989^^b#fff929^$(echo -e "\ue0b0")\
 ^b#fff929^^c#000000^ $(dwm_memory) \
 ^c#fff929^^b#c20000^$(echo -e "\ue0b0") \
 ^c#000000^^b#c20000^$(dwm_transmission) \

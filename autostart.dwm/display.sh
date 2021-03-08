@@ -1,6 +1,8 @@
 #!/bin/bash
 
-sleep 1
+# 筛选xrandr结果，对所有已连接的显示器设置该显示器最高分辨率
+# sunowsir@163.com
+# GNU GPLv3
 
 function set_display() {
     local awk_reso_flag=1;
@@ -28,4 +30,5 @@ function set_display() {
 # xrandr --output eDP-1-1 --mode 2160x1440
 # xrandr --output DP-1 --mode 1920x1080
 
+sleep 1
 set_display
