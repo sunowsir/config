@@ -6,19 +6,24 @@
 
 dwm_battery () {
     # Change BAT1 to whatever your battery is identified as. Typically BAT0 or BAT1
-    CHARGE=$(cat /sys/class/power_supply/BAT0/capacity)
-    STATUS=$(cat /sys/class/power_supply/BAT0/status)
+    CHARGE=$(cat /sys/class/power_supply/ACAD/capacity)
+    STATUS=$(cat /sys/class/power_supply/ACAD/status)
 
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
         if [ "$STATUS" = "Discharging" ]; then
-            printf "🔋 %s%%" "$CHARGE" 
+            printf "🔋" 
         else
-            printf "🔌 %s%%" "$CHARGE"
+            printf "🔌"
         fi
     else
-        printf "BAT %s%%" "$CHARGE" 
+        printf "BAT " 
     fi
+
+    if [ "${CHARGE}" != "" ]; then
+        printf " %s%%" "${CHARGE}"
+    fi
+
     printf "%s\n" "$SEP2"
 }
 

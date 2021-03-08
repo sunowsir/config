@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/bin/bash ~/.config/autostart.dwm/dualmon.sh &
+/bin/bash ~/.config/autostart.dwm/display.sh &
 /bin/bash ~/.config/autostart.dwm/dwm-status.sh &
 /bin/bash ~/.config/autostart.dwm/wp-autochange.sh &
 

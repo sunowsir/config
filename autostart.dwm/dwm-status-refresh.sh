@@ -33,12 +33,12 @@ source "$DIR/dwmbar-functions/dwm_memory.sh"
 xsetroot -name " \
 ^b#fff929^^c#000000^ $(dwm_memory) \
 ^c#fff929^^b#c20000^$(echo -e "\ue0b0") \
-^c#000000^^b#c20000^ $(dwm_transmission) \
+^c#000000^^b#c20000^$(dwm_transmission) \
 ^c#c20000^^b#8A2BE2^$(echo -e "\ue0b0") \
-^c#000000^^b#8A2BE2^ $(dwm_alsa) \
+^c#000000^^b#8A2BE2^$(dwm_alsa) \
 ^c#8A2BE2^^b#00FA9A^$(echo -e "\ue0b0") \
-^c#000000^^b#00FA9A^ $(dwm_battery) \
+^c#000000^^b#00FA9A^$(dwm_battery) \
 ^c#00FA9A^^b#8B8989^$(echo -e "\ue0b0") \
-^c#000000^^b#8B8989^ $(dwm_date) \
+^c#000000^^b#8B8989^$(dwm_date) \
 "
 

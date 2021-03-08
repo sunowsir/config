@@ -8,12 +8,12 @@
 
 
 dwm_memory(){
-	local memfree=$(($(grep -m1 'MemAvailable:' /proc/meminfo | awk '{print $2}') / 1024 / 1024))
+	local memfree_Mb=$(( $( grep -m1 'MemAvailable:' /proc/meminfo | awk '{print $2}') / 1024 ))
 
     if [ "$IDENTIFIER" = "unicode" ]; then
 	    echo -ne "💿 "
     else 
 	    echo -ne "MEM "
     fi
-	 echo "${memfree}GB"
+    echo "$( echo "scale=2; ${memfree_Mb} / 1024" | bc )GB"
 }
