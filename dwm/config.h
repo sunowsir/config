@@ -23,19 +23,24 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#ffffff";
+static const char col_gray5[]       = "#8B8989"; 
+static const char col_gray6[]       = "#528B8B"; 
 static const char col_cyan[]        = "#37474F";
-static const char col_border[]        = "#00FFFF";
+static const char col_black[]       = "#000000";
+static const char col_border[]        = "#00868B"; // "#00FFFF";
 
-static const char selbgcolor[]      = "#00FFFF"; // "#005577";
-static const char selfgcolor[]      = "#ffffff"; // "#eeeeee";
+static const char selbgcolor[]      = "#000000"; // "#00FFFF"; // "#005577";
+static const char selfgcolor[]      = "#8B8989"; // "#ffffff"; // "#eeeeee";
 
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_border  },
-	[SchemeHid]  = { col_cyan,  col_gray1, col_border  },
+	// [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	[SchemeNorm] = { col_black, col_gray5, col_gray5 },
+	// [SchemeSel]  = { col_gray4, col_cyan,  col_border  },
+	[SchemeSel] = { col_black, col_gray5, col_gray5 },
+	[SchemeHid]  = { col_black,  col_gray6, col_gray6  },
 };
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
