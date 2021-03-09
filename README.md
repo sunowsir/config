@@ -31,7 +31,7 @@
     * `blueman`
     * `pulseaudio`
     * `pulseaudio-bluetooth`
-    * `acpilight`
+    * `acpilight` (need: `sudo gpasswd video -a 用户名`)
 
 
 
