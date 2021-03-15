@@ -28,8 +28,8 @@ source "$DIR/dwmbar-functions/dwm_memory.sh"
 DSR_Col=(
     "#000000"
     "#8B8989"
-    "#fff929"
-    "#c20000"
+    "#8B8989"
+    "#8B8989"
     "#8A2BE2"
     "#00FA9A"
 )
