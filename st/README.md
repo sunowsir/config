@@ -1,4 +1,4 @@
 ## st -- simple terminal ##
 
 ---
-* fork from [suckless](https://st.suckless.org/) and **theniceboy**
+* fork and change from [suckless](https://st.suckless.org/) and **theniceboy**
