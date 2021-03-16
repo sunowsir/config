@@ -4,11 +4,11 @@ VERSION = 6.2
 # Customize below to fit your system
 
 # paths
-PREFIX = /usr/local
+PREFIX = /usr
 MANPREFIX = ${PREFIX}/share/man
 
-X11INC = /usr/include/X11
-X11LIB = /usr/lib/X11
+X11INC = ${PREFIX}/include/X11
+X11LIB = ${PREFIX}/lib/X11
 
 # Xinerama, comment if you don't want it
 XINERAMALIBS  = -lXinerama
@@ -16,7 +16,7 @@ XINERAMAFLAGS = -DXINERAMA
 
 # freetype
 FREETYPELIBS = -lfontconfig -lXft
-FREETYPEINC = /usr/include/freetype2
+FREETYPEINC = ${PREFIX}/include/freetype2
 # OpenBSD (uncomment)
 #FREETYPEINC = ${X11INC}/freetype2
 

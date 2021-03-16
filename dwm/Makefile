@@ -43,9 +43,14 @@ install: all
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
+	cp -f dwm.png ${DESTDIR}${PREFIX}/share/pixmaps
+	cp -f dwm.desktop ${DESTDIR}${PREFIX}/share/xsessions
 
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
-		${DESTDIR}${MANPREFIX}/man1/dwm.1
+		${DESTDIR}${MANPREFIX}/man1/dwm.1\
+		${DESTDIR}${MANPREFIX}/share/pixmaps/dwm.png\
+		${DESTDIR}${MANPREFIX}/share/xsessions/dwm.desktop
+
 
 .PHONY: all options clean dist install uninstall
