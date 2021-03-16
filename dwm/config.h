@@ -98,6 +98,7 @@ static const char *changelightdowncmd[] = { "xbacklight", "-dec", "10", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x24", NULL };
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
+static const char *slockcmd[] = {"slock", NULL};
 
 static const char *upvol[]   = { "/home/sunowsir/.config/autostart.dwm/vol-up.sh",  NULL };
 static const char *downvol[] = { "/home/sunowsir/.config/autostart.dwm/vol-down.sh",  NULL };
@@ -117,6 +118,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_m,                    spawn,          {.v = setcolemakcmd } },
 	{ MODKEY|ShiftMask,    XK_p,                    spawn,          {.v = suspendcmd } },
 	{ MODKEY|ControlMask,  XK_s,                    spawn,          {.v = sktogglecmd } },
+	{ MODKEY|ControlMask,  XK_l,                    spawn,          {.v = slockcmd } },
 	{ 0,                   XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },
 	{ 0,                   XF86XK_AudioMute,        spawn,          {.v = mutevol } },
 	{ 0,                   XF86XK_AudioRaiseVolume, spawn,          {.v = upvol   } },
