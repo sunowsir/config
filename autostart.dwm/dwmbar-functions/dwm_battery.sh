@@ -25,6 +25,7 @@ dwm_battery () {
     fi
 
     printf "%s\n" "$SEP2"
+    return ${?}
 }
 
 dwm_battery
