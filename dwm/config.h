@@ -32,7 +32,7 @@ static const char col_border[]        = "#00868B"; // "#00FFFF";
 static const char selbgcolor[]      = "#000000"; // "#00FFFF"; // "#005577";
 static const char selfgcolor[]      = "#8B8989"; // "#ffffff"; // "#eeeeee";
 
-static const unsigned int baralpha = 0xd0;
+static const unsigned int baralpha = 0x12c;// 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
