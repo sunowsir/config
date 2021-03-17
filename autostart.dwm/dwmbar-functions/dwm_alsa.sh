@@ -21,7 +21,7 @@ dwm_alsa () {
             printf "\U1F50A %s%%" "$VOL"
         fi
     else
-        if [ "$VOL" -eq 0 ]; then
+        if [ "$VOL" -eq 0 ] || [ "${STATUS}" = "off" ]; then
             printf "MUTE"
         elif [ "$VOL" -gt 0 ] && [ "$VOL" -le 33 ]; then
             printf "VOL %s%%" "$VOL"
