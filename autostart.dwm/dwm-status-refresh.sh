@@ -25,36 +25,31 @@ source "$DIR/dwmbar-functions/dwm_date.sh"
 # shellcheck source=dwmbar-functions/dwm_memory.sh
 source "$DIR/dwmbar-functions/dwm_memory.sh"
 
-DSR_Col=(
-    "#000000"
-    "#8B8989"
-    "#8B8989"
-    "#8B8989"
-    "#8A2BE2"
-    "#00FA9A"
+# shellcheck source=dwmbar-themes/default-theme.sh
+source "$DIR/dwmbar-themes/default-theme.sh"
+
+DSR_BLOCK_DATE=(
+    "$(dwm_memory)"
+    "$(dwm_transmission)"
+    "$(dwm_alsa)"
+    "$(dwm_battery)"
+    "$(dwm_date)"
 )
 
-function gen_block_str() {
-    # 文本颜色：^cRGB颜色值^
-    # 背景颜色：^bRGB颜色值^
-    echo -ne "^b${1}^^c${2}^${3}"
-}
-
 function gen_str() {
+    local block_date_num=${#DSR_BLOCK_DATE[@]}
     local dwm_status=""
-    dwm_status="${dwm_status}$(gen_block_str "${DSR_Col[2]}" "${DSR_Col[1]}" " \ue0b0")"
-    dwm_status="${dwm_status}$(gen_block_str "${DSR_Col[2]}" "${DSR_Col[0]}" " $(dwm_memory) ")"
-    dwm_status="${dwm_status}$(gen_block_str "${DSR_Col[3]}" "${DSR_Col[2]}" "\ue0b0")"
-    dwm_status="${dwm_status}$(gen_block_str "${DSR_Col[3]}" "${DSR_Col[0]}" " $(dwm_transmission) ")"
-    dwm_status="${dwm_status}$(gen_block_str "${DSR_Col[4]}" "${DSR_Col[3]}" "\ue0b0")"
-    dwm_status="${dwm_status}$(gen_block_str "${DSR_Col[4]}" "${DSR_Col[0]}" " $(dwm_alsa) ")"
-    dwm_status="${dwm_status}$(gen_block_str "${DSR_Col[5]}" "${DSR_Col[4]}" "\ue0b0")"
-    dwm_status="${dwm_status}$(gen_block_str "${DSR_Col[5]}" "${DSR_Col[0]}" " $(dwm_battery) ")"
-    dwm_status="${dwm_status}$(gen_block_str "${DSR_Col[1]}" "${DSR_Col[5]}" "\ue0b0")"
-    dwm_status="${dwm_status}$(gen_block_str "${DSR_Col[1]}" "${DSR_Col[0]}" " $(dwm_date) ")"
+    
+    for index in "${!DSR_BLOCK_DATE[@]}"; do
+        if [[ ${index} -lt ${block_date_num} ]]; then
+            dwm_status="${dwm_status}^b#8B8989^^c#000000^ \ue0b1 "
+        fi
+
+        dwm_status="${dwm_status}^b#8B8989^^c#000000^${DSR_BLOCK_DATE[${index}]}"
+    done
+    dwm_status="${dwm_status} "
 
     echo -ne "${dwm_status}"
 }
 
 xsetroot -name "$(gen_str)"
-
