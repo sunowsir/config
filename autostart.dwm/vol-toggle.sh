@@ -9,7 +9,6 @@ function VOL_TOGGLE_get_status() {
 
 function VOL_TOGGLE_HANDLE() {
 
-    echo $(VOL_TOGGLE_get_status "Master")
     case $(VOL_TOGGLE_get_status "Master") in 
         "on")
             /usr/bin/amixer set Master toggle
