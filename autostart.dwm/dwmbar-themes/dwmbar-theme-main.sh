@@ -13,15 +13,14 @@ function DWMBAR_THEME_Main_Handle() {
     export IDENTIFIER="unicode"
 
     local theme_name="${1}"
-    local data_list=${2}
     local status_bar_str=""
 
-    source "${DIR}/dwmbar-theme-${theme_name}.sh"
+    source "${DIR}/dwmbar-themes/dwmbar-theme-${theme_name}.sh"
 
-    for ((i = 0; i < ${#data_list[*]}; i++)); do
-        status_bar_str="${status_bar_str}$(DWMBAR_THEME_Rendering "${data_list[${i}]}")"
+    for ((i = 2; i <= ${#}; i++)); do
+        status_bar_str="${status_bar_str}$(DWMBAR_THEME_Rendering "${!i}")"
     done
-
+    
     xsetroot -name "${status_bar_str}"
     return ${?}
 }

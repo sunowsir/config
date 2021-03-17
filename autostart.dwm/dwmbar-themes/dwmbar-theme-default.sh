@@ -13,5 +13,5 @@ function DWMBAR_THEME_Rendering() {
     block_str="${block_str}^b#8B8989^^c#000000^\ue0b1 "
     block_str="${block_str}^b#8B8989^^c#000000^${block_data} "
 
-    echo "${block_str}"
+    echo -ne "${block_str}"
 }

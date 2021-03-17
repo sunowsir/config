@@ -1,18 +1,14 @@
 #!/bin/bash
-#
-#	* File     : dwm-status-refresh.new.sh
-#	* Author   : sunowsir
+
+#	* File     : dwm-status-refresh.sh
+#	* Author   : sunowsir change and create base theniceboy
 #	* Mail     : sunowsir@163.com
 #	* Github   : github.com/sunowsir
-#	* Creation : 2021年03月17日 星期三 17时17分18秒
+#	* Creation : 2021年03月05日 星期五 12时51分36秒
 
-# Don't change.
 LOC=$(readlink -f "$0")
 DIR=$(dirname "$LOC")
 export IDENTIFIER="unicode"
-
-# shellcheck source=dwmbar-themes/dwmbar-theme-main.sh
-source "${DIR}/dwmbar-themes/dwmbar-theme-main.sh"
 
 # shellcheck source=dwmbar-functions/dwm_transmission.sh
 source "$DIR/dwmbar-functions/dwm_transmission.sh"
@@ -29,12 +25,7 @@ source "$DIR/dwmbar-functions/dwm_date.sh"
 # shellcheck source=dwmbar-functions/dwm_memory.sh
 source "$DIR/dwmbar-functions/dwm_memory.sh"
 
-
-# Change the variable setting to your favorite theme
-DWMBAR_THEME="default"
-
-# Change the variable setting to the status bar information you need.
-DWMBAR_DATA=(
+DSR_BLOCK_DATE=(
     "$(dwm_memory)"
     "$(dwm_transmission)"
     "$(dwm_alsa)"
@@ -42,7 +33,20 @@ DWMBAR_DATA=(
     "$(dwm_date)"
 )
 
+function gen_str() {
+    local block_date_num=${#DSR_BLOCK_DATE[@]}
+    local dwm_status=""
+    
+    for index in "${!DSR_BLOCK_DATE[@]}"; do
+        if [[ ${index} -lt ${block_date_num} ]]; then
+            dwm_status="${dwm_status}^b#8B8989^^c#000000^ \ue0b1 "
+        fi
 
+        dwm_status="${dwm_status}^b#8B8989^^c#000000^${DSR_BLOCK_DATE[${index}]}"
+    done
+    dwm_status="${dwm_status} "
 
-DWMBAR_THEME_Main_Handle "${DWMBAR_THEME}" "${DWMBAR_DATA[@]}" 
+    echo -ne "${dwm_status}"
+}
 
+xsetroot -name "$(gen_str)"
