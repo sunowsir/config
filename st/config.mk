@@ -4,11 +4,11 @@ VERSION = 0.8.3
 # Customize below to fit your system
 
 # paths
-PREFIX = /usr/local
-MANPREFIX = $(PREFIX)/share/man
+PREFIX = /usr
+MANPREFIX = ${PREFIX}/share/man
 
-X11INC = /usr/include/X11
-X11LIB = /usr/lib/X11
+X11INC = ${PREFIX}/include/X11
+X11LIB = ${PREFIX}/lib/X11
 
 PKG_CONFIG = pkg-config
 
