@@ -4,10 +4,11 @@
 # sunowsir@163.com
 # GNU GPLv3
 
-function set_display() {
+function DWM_DISPLAY_get() {
     local awk_reso_flag=1;
+    local cmd=""
     
-    xrandr | tr -s ' ' | sed 's/^\ //g' | awk -v reso_flag="${awk_reso_flag}" '
+    cmd=$(xrandr | tr -s ' ' | sed 's/^\ //g' | awk -v reso_flag="${awk_reso_flag}" '
     {
         if ($2 != "disconnected") { 
             if ($2 == "connected" && reso_flag == 1) {
@@ -17,12 +18,25 @@ function set_display() {
             if ($1 ~ /^[0-9]*x[0-9]*/ && reso_flag == 0) {
                 reso_flag = 1;
                 resolution = $1;
-                cmd = sprintf("xrandr --output %s --mode %s", device, resolution);
-                printf("%s\n", cmd);
-                system(cmd);
+                printf("DWM_DISPLAY_Device[${#DWM_DISPLAY_Device[*]}]=\"%s\"; DWM_DISPLAY_Resolution[${#DWM_DISPLAY_Resolution[*]}]=\"%s\";", device, resolution);
             } 
         } 
-    }' 
+    }')
+    
+    eval "${cmd}"
+}
+
+function DWM_DISPLAY_set() {
+    local cmd_head="xrandr --output "
+
+    for i in "${!DWM_DISPLAY_Device[@]}"; do
+        local cmd="${cmd_head}"
+
+        cmd="${cmd}${DWM_DISPLAY_Device[${i}]}"
+        cmd="${cmd} --mode ${DWM_DISPLAY_Resolution[${i}]}"
+
+        eval "${cmd}"
+    done
 }
 
 # xrandr --auto --output DP-2 --same-as eDP-1 --size 1920x1080
@@ -31,4 +45,6 @@ function set_display() {
 # xrandr --output DP-1 --mode 1920x1080
 
 sleep 1
-set_display
+DWM_DISPLAY_get
+DWM_DISPLAY_set
+
