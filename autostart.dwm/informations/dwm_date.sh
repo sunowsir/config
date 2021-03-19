@@ -15,4 +15,3 @@ dwm_date () {
     printf "%s\n" "$SEP2"
 }
 
-dwm_date

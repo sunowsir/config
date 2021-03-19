@@ -53,5 +53,3 @@ dwm_transmission () {
     fi
 }
 
-
-dwm_transmission

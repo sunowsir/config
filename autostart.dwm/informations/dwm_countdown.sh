@@ -22,4 +22,3 @@ dwm_countdown () {
     done
 }
 
-dwm_countdown

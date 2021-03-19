@@ -20,5 +20,3 @@ dwm_vpn () {
     fi
 }
 
-
-dwm_vpn

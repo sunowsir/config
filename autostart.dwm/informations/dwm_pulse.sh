@@ -34,4 +34,3 @@ dwm_pulse () {
     printf "%s\n" "$SEP2"
 }
 
-dwm_pulse

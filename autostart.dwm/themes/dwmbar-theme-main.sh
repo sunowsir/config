@@ -15,7 +15,7 @@ function DWMBAR_THEME_Main_Handle() {
     local theme_name="${1}"
     local status_bar_str=""
 
-    source "${DIR}/dwmbar-themes/dwmbar-theme-${theme_name}.sh"
+    source "${DIR}/themes/dwmbar-theme-${theme_name}.sh"
 
     for ((i = 2; i <= ${#}; i++)); do
         status_bar_str="${status_bar_str}$(DWMBAR_THEME_Rendering "${!i}")"

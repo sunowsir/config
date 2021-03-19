@@ -24,5 +24,4 @@ dwm_network () {
     printf "%s\n" "$SEP2"
 }
 
-dwm_network
 

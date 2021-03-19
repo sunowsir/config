@@ -22,4 +22,3 @@ dwm_mail () {
     printf "%s\n" "$SEP2"
 }
 
-dwm_mail

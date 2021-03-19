@@ -16,4 +16,3 @@ dwm_keyboard () {
     printf "%s\n" "$SEP2"
 }
 
-dwm_keyboard

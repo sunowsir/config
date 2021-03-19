@@ -21,4 +21,3 @@ dwm_ccurse () {
     fi
 }
 
-dwm_ccurse

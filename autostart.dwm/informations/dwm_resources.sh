@@ -24,4 +24,3 @@ dwm_resources () {
     printf "%s\n" "$SEP2"
 }
 
-dwm_resources
