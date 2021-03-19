@@ -44,7 +44,3 @@ function DWM_DISPLAY_set() {
 # xrandr --output eDP-1-1 --mode 2160x1440
 # xrandr --output DP-1 --mode 1920x1080
 
-sleep 1
-DWM_DISPLAY_get
-DWM_DISPLAY_set
-

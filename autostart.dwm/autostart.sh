@@ -10,5 +10,10 @@ DIR="$(dirname "$(readlink -f "$0")")"
 
 source "${DIR}/core/engine.sh"
 
+function DWM_AUTOSTART_KILL() {
+    kill "$(pgrep -f "${0//./\\.}" | grep -v $$)" > /dev/null 2>&1  
+}
+
+DWM_AUTOSTART_KILL
 DWM_CORE_ENGINE_Init
 DWM_CORE_ENGINE_Loop
