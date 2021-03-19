@@ -7,11 +7,14 @@
 #	* Creation : 2021年03月19日 星期五 10时15分02秒
 
 DIR="$(dirname "$(readlink -f "$0")")"
+export IDENTIFIER="unicode"
 
 source "${DIR}/core/engine.sh"
 
 function DWM_AUTOSTART_KILL() {
-    kill "$(pgrep -f "${0//./\\.}" | grep -v $$)" > /dev/null 2>&1  
+    for id in  $(pgrep -f "${0//./\\.}" | grep -v $$ | tr -s '\n' ' '); do 
+        kill ${id} > /dev/null 2>&1
+    done
 }
 
 DWM_AUTOSTART_KILL

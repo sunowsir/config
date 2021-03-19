@@ -7,6 +7,7 @@
 #	* Creation : 2021年03月19日 星期五 10时14分51秒
 
 DIR="$(dirname "$(readlink -f "$0")")"
+export IDENTIFIER="unicode"
 
 source "${DIR}/core/source.sh"
 
