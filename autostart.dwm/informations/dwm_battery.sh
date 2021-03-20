@@ -6,8 +6,8 @@
 
 dwm_battery () {
     # Change BAT1 to whatever your battery is identified as. Typically BAT0 or BAT1
-    CHARGE=$(cat /sys/class/power_supply/ACAD/capacity 2> /dev/null)
-    STATUS=$(cat /sys/class/power_supply/ACAD/status 2> /dev/null)
+    CHARGE=$(cat /sys/class/power_supply/BAT0/capacity 2> /dev/null)
+    STATUS=$(cat /sys/class/power_supply/BAT0/status 2> /dev/null)
 
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then

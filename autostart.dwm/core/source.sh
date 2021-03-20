@@ -9,6 +9,8 @@
 DIR="$(dirname "$(readlink -f "$0")")"
 export IDENTIFIER="unicode"
 
+DWM_DISPLAY_xrandr_cache=""
+
 shopt -s nullglob
 for sfname in "${DIR}/informations/"*.sh; do
     source "${sfname}"

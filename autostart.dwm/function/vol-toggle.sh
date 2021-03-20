@@ -20,5 +20,4 @@ function VOL_TOGGLE_HANDLE() {
     esac
 }
 VOL_TOGGLE_HANDLE
-bash ~/.config/autostart.dwm/dwm-status-refresh.sh
 

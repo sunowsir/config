@@ -4,7 +4,12 @@
 # sunowsir@163.com
 # GNU GPLv3
 
+DIR="$(dirname "$(readlink -f "$0")")"
+
 function DWM_DISPLAY_get() {
+    DWM_DISPLAY_Device=()
+    DWM_DISPLAY_Resolution=()
+
     local awk_reso_flag=1;
     local cmd=""
     
@@ -23,18 +28,23 @@ function DWM_DISPLAY_get() {
         } 
     }')
     
-    eval "${cmd}"
+    echo "${cmd}"
 }
 
 function DWM_DISPLAY_set() {
+    eval "$(DWM_DISPLAY_get)"
+
     local cmd_head="xrandr --output "
 
     for i in "${!DWM_DISPLAY_Device[@]}"; do
         local cmd="${cmd_head}"
+        local device="${DWM_DISPLAY_Device[${i}]}"
+        local resolution="${DWM_DISPLAY_Resolution[${i}]}"
 
-        cmd="${cmd}${DWM_DISPLAY_Device[${i}]}"
-        cmd="${cmd} --mode ${DWM_DISPLAY_Resolution[${i}]}"
+        cmd="${cmd}${device}"
+        cmd="${cmd} --mode ${resolution}"
 
+        echo "${device}"
         eval "${cmd}"
     done
 }

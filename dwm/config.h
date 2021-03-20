@@ -33,24 +33,21 @@ static const char selbgcolor[]      = "#000000"; // "#00FFFF"; // "#005577";
 static const char selfgcolor[]      = "#8B8989"; // "#ffffff"; // "#eeeeee";
 
 static const unsigned int baralpha = 0x12c;// 0xd0;
-static const unsigned int borderalpha = OPAQUE;
+static const unsigned int borderalpha = 0x12c;// OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	// [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeNorm] = { col_black, col_gray5, col_gray5 },
-	// [SchemeSel]  = { col_gray4, col_cyan,  col_border  },
 	[SchemeSel] = { col_black, col_gray5, col_gray5 },
 	[SchemeHid]  = { col_black,  col_gray6, col_gray6  },
 };
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
-	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
-	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeNorm] = { baralpha, baralpha, borderalpha },
+	[SchemeSel]  = { baralpha, baralpha, borderalpha },
 };
 
 /* tagging */
 static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
-// static const char *tags[] = { "\uf120", "\uf7ae", "\uf121", "\uf04b", "\ue62e", "\uf251", "\ue727", "\uf537", "\uf684" };
 
 static const Rule rules[] = {
 	/* xprop(1):

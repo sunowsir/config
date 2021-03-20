@@ -9,8 +9,9 @@
 DIR="$(dirname "$(readlink -f "$0")")"
 export IDENTIFIER="unicode"
 
-source "${DIR}/core/source.sh"
+## Change the following content according to your needs. ##
 
+# Change the array to setting dwm status bar information.
 DWMBAR_DATA=(
     "$(dwm_memory)"
     "$(dwm_transmission)"
@@ -24,16 +25,16 @@ DWMBAR_THEME="default"
 
 # Change the array to set the initialization command.
 DWM_INIT_LIST=(
-    'sleep 1; DWM_DISPLAY_get; DWM_DISPLAY_set;'
-    'picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b --experimental-backends'
-    'nm-applet &'
-    'sleep 2; fcitx5 &'
+    'sleep 1; DWM_DISPLAY_set;'
+    'DWM_SETUP_inverse-scroll;'
+    'picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b --experimental-backends;'
+    'nm-applet;'
+    'sleep 2; fcitx5;'
 )
 
 # Change the array to set timing tasks.
 DWM_TASK_LIST=(
-    'DWM_DISPLAY_get & DWM_DISPLAY_set & sleep 1'
-    'DWMBAR_THEME_Main_Handle "${DWMBAR_THEME}" "${DWMBAR_DATA[@]}"; sleep 1 '
-    'feh --recursive --randomize --bg-fill ~/Pictures/wallpapers/ & sleep 3m '
+    'DWMBAR_THEME_Main_Handle "${DWMBAR_THEME}" "${DWMBAR_DATA[@]}"; sleep 1;'
+    'feh --recursive --randomize --bg-fill ~/Pictures/wallpapers/ & sleep 3m;'
 )
 

@@ -9,20 +9,20 @@
 DIR="$(dirname "$(readlink -f "$0")")"
 export IDENTIFIER="unicode"
 
+source "${DIR}/core/source.sh"
 source "${DIR}/config.sh"
-
-function DWM_CORE_ENGINE_Init() {
-    for i in "${!DWM_INIT_LIST[@]}"; do
-        eval "${DWM_INIT_LIST[${i}]}"
-        echo "${DWM_INIT_LIST[${i}]}"
-    done
-}
 
 function DWM_CORE_ENGINE_Loop_eval() {
     while true; do
         source "${DIR}/config.sh"
         eval "${1}"
         sleep 0.5
+    done
+}
+
+function DWM_CORE_ENGINE_Init() {
+    for i in "${!DWM_INIT_LIST[@]}"; do
+        eval "${DWM_INIT_LIST[${i}]}" &
     done
 }
 
