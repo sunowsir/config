@@ -12,14 +12,6 @@ export IDENTIFIER="unicode"
 source "${DIR}/core/source.sh"
 source "${DIR}/config.sh"
 
-function DWM_CORE_ENGINE_Loop_eval() {
-    while true; do
-        source "${DIR}/config.sh"
-        eval "${1}"
-        sleep 0.5
-    done
-}
-
 function DWM_CORE_ENGINE_Init() {
     for i in "${!DWM_INIT_LIST[@]}"; do
         eval "${DWM_INIT_LIST[${i}]}" &
@@ -27,10 +19,13 @@ function DWM_CORE_ENGINE_Init() {
 }
 
 function DWM_CORE_ENGINE_Loop() {
-    for i in "${!DWM_TASK_LIST[@]}"; do
-        DWM_CORE_ENGINE_Loop_eval "${DWM_TASK_LIST[${i}]}" &
-    done
+    while true; do
+        source "${DIR}/config.sh"
+        for i in "${!DWM_TASK_LIST[@]}"; do
+            eval "${DWM_TASK_LIST[${i}]}" &
+        done
 
-    wait
+        sleep 0.5
+    done
 }
 
