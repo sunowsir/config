@@ -18,31 +18,36 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=16" };
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#ffffff";
-static const char col_gray5[]       = "#8B8989"; 
-static const char col_gray6[]       = "#528B8B"; 
-static const char col_cyan[]        = "#37474F";
-static const char col_black[]       = "#000000";
-static const char col_border[]        = "#00868B"; // "#00FFFF";
 
-static const char selbgcolor[]      = "#000000"; // "#00FFFF"; // "#005577";
-static const char selfgcolor[]      = "#8B8989"; // "#ffffff"; // "#eeeeee";
+static const char norm_fg_color[]     = "#000000"; 
+static const char norm_bg_color[]     = "#8B8989"; 
+static const char norm_border_color[] = "#8B8989"; 
+static const char sel_fg_color[]      = "#000000"; 
+static const char sel_bg_color[]      = "#8B8989"; 
+static const char sel_border_color[]  = "#8B8989"; 
+static const char hid_fg_color[]      = "#000000"; 
+static const char hid_bg_color[]      = "#528B8B"; 
+static const char hid_border_color[]  = "#528B8B"; 
 
-static const unsigned int baralpha = 0x12c;// 0xd0;
-static const unsigned int borderalpha = 0x12c;// OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_black, col_gray5, col_gray5 },
-	[SchemeSel] = { col_black, col_gray5, col_gray5 },
-	[SchemeHid]  = { col_black,  col_gray6, col_gray6  },
+	[SchemeNorm]    = { norm_fg_color, norm_bg_color, norm_border_color },
+	[SchemeSel]     = { sel_fg_color,  sel_bg_color,  sel_border_color  },
+	[SchemeHid]     = { hid_fg_color,  hid_bg_color,  hid_border_color  },
 };
+
+static const unsigned int norm_fg_alpha = 0x12c;
+static const unsigned int norm_bg_alpha = 0x12c;
+static const unsigned int norm_border_alpha = 0x12c;
+static const unsigned int sel_fg_alpha = 0x12c;
+static const unsigned int sel_bg_alpha = 0x12c;
+static const unsigned int sel_border_alpha = 0x12c;
+
+static const unsigned int baralpha = 0x12c;
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
-	[SchemeNorm] = { baralpha, baralpha, borderalpha },
-	[SchemeSel]  = { baralpha, baralpha, borderalpha },
+	[SchemeNorm] = { norm_fg_alpha, norm_bg_alpha, norm_border_alpha },
+	[SchemeSel]  = { sel_fg_alpha,  sel_bg_alpha,  sel_border_alpha  },
 };
 
 /* tagging */
