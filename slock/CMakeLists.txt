@@ -35,6 +35,7 @@ target_link_libraries(slock
     crypt
     Xrandr
     Imlib2
+    Xinerama
 ) 
 
 install(TARGETS slock
