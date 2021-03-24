@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sunowsir/Code/Github/1.my_project/config/dmenu/arg.h
+
+/home/sunowsir/Code/Github/1.my_project/config/dmenu/stest.c
+sys/stat.h
+-
+dirent.h
+-
+limits.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+arg.h
+/home/sunowsir/Code/Github/1.my_project/config/dmenu/arg.h
+

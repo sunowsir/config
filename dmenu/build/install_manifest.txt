@@ -1,0 +1,6 @@
+/usr/bin/dmenu
+/usr/bin/stest
+/usr/bin/dmenu_run
+/usr/bin/dmenu_path
+/usr/share/man/man1/stest.1
+/usr/share/man/man1/dmenu.1
