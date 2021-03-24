@@ -1,3 +1,0 @@
-/home/sunowsir/Code/Github/1.my_project/config/dwm/build/CMakeFiles/rebuild_cache.dir
-/home/sunowsir/Code/Github/1.my_project/config/dwm/build/CMakeFiles/edit_cache.dir
-/home/sunowsir/Code/Github/1.my_project/config/dwm/build/CMakeFiles/dwm.dir

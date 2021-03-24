@@ -3,12 +3,26 @@ cmake_minimum_required(VERSION 3.10)
 # set the project name 
 project(dwm) 
 
-# include_directories(src)
+set(C_STANDARD 99)
+set(VERSION "\\\"6.2\\\"")
+set(CMAKE_INSTALL_PREFIX "/usr")
+set(CMAKE_LIBRARY_PATH "/usr/lib/X11")
+SET(CMAKE_C_FLAGS 
+    "-pedantic \
+    -Wall \
+    -Wno-deprecated-declarations \
+    -O2 \
+    -D_DEFAULT_SOURCE \
+    -D_BSD_SOURCE \
+    -D_POSIX_C_SOURCE=200809L \
+    -DVERSION=${VERSION} \
+    -DXINERAMA" 
+CACHE STRING "" FORCE)
 
-set(CMAKE_CXX_STANDARD 99)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin)
-set(CMAKE_C_FLAGS " -L/usr/lib/X11 -lX11 -lXinerama -lfontconfig -lXft -lXrender -pedantic -Wall -Wno-deprecated-declarations -O2 -I/usr/include/X11 -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -D VERSION=${VERSION} -DXINERAMA")
+include_directories( 
+    /usr/include/X11 
+    /usr/include/freetype2 
+)
 
 add_executable(dwm
     ./drw.c
@@ -16,4 +30,27 @@ add_executable(dwm
     ./util.c
 )
 
-target_link_libraries(dwm) 
+target_link_libraries(dwm
+    X11 
+    Xft 
+    Xrender
+    Xinerama 
+    fontconfig 
+) 
+
+install(TARGETS dwm
+    RUNTIME DESTINATION bin
+)
+
+install(FILES
+    dwm.png DESTINATION share/pixmaps
+)
+
+install(FILES
+    dwm.desktop DESTINATION share/xsessions
+)
+
+install(FILES 
+    dwm.1 DESTINATION share/man/man1
+)
+
