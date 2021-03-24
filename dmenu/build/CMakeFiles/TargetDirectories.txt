@@ -1,8 +1,0 @@
-/home/sunowsir/Code/Github/1.my_project/config/dmenu/build/CMakeFiles/install/local.dir
-/home/sunowsir/Code/Github/1.my_project/config/dmenu/build/CMakeFiles/install.dir
-/home/sunowsir/Code/Github/1.my_project/config/dmenu/build/CMakeFiles/list_install_components.dir
-/home/sunowsir/Code/Github/1.my_project/config/dmenu/build/CMakeFiles/rebuild_cache.dir
-/home/sunowsir/Code/Github/1.my_project/config/dmenu/build/CMakeFiles/edit_cache.dir
-/home/sunowsir/Code/Github/1.my_project/config/dmenu/build/CMakeFiles/install/strip.dir
-/home/sunowsir/Code/Github/1.my_project/config/dmenu/build/CMakeFiles/stest.dir
-/home/sunowsir/Code/Github/1.my_project/config/dmenu/build/CMakeFiles/dmenu.dir
