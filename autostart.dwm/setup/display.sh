@@ -4,8 +4,6 @@
 # sunowsir@163.com
 # GNU GPLv3
 
-DIR="$(dirname "$(readlink -f "$0")")"
-
 function DWM_DISPLAY_get() {
     DWM_DISPLAY_Device=()
     DWM_DISPLAY_Resolution=()

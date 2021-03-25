@@ -6,11 +6,6 @@
 #	* Github   : github.com/sunowsir
 #	* Creation : 2021年03月19日 星期五 10时14分51秒
 
-DIR="$(dirname "$(readlink -f "$0")")"
-export IDENTIFIER="unicode"
-
-## Change the following content according to your needs. ##
-
 # Change the array to setting dwm status bar information.
 DWMBAR_DATA=(
     "$(dwm_memory)"

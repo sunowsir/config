@@ -6,11 +6,7 @@
 #	* Github   : github.com/sunowsir
 #	* Creation : 2021年03月17日 星期三 17时20分22秒
 
-
 function DWMBAR_THEME_Main_Handle() {
-    local LOC=$(readlink -f "$0")
-    local DIR=$(dirname "$LOC")
-    export IDENTIFIER="unicode"
 
     local theme_name="${1}"
     local status_bar_str=""
