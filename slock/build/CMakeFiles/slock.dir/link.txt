@@ -1,1 +1,0 @@
-/usr/bin/cc -pedantic     -Wall     -Ofast     -O2     -D_DEFAULT_SOURCE     -DHAVE_SHADOW_H     -DVERSION=\"1.4\"     -D_POSIX_C_SOURCE=200809L CMakeFiles/slock.dir/slock.c.o CMakeFiles/slock.dir/explicit_bzero.c.o -o slock  -lc -lX11 -lXext -lcrypt -lXrandr -lImlib2 -lXinerama 

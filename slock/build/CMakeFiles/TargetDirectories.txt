@@ -1,7 +1,0 @@
-/home/sunowsir/Code/1.GitHub/1.my_project/config/slock/build/CMakeFiles/install/strip.dir
-/home/sunowsir/Code/1.GitHub/1.my_project/config/slock/build/CMakeFiles/install/local.dir
-/home/sunowsir/Code/1.GitHub/1.my_project/config/slock/build/CMakeFiles/install.dir
-/home/sunowsir/Code/1.GitHub/1.my_project/config/slock/build/CMakeFiles/list_install_components.dir
-/home/sunowsir/Code/1.GitHub/1.my_project/config/slock/build/CMakeFiles/rebuild_cache.dir
-/home/sunowsir/Code/1.GitHub/1.my_project/config/slock/build/CMakeFiles/edit_cache.dir
-/home/sunowsir/Code/1.GitHub/1.my_project/config/slock/build/CMakeFiles/slock.dir
