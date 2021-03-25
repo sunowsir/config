@@ -1,0 +1,4 @@
+/usr/bin/st
+/usr/bin/st-copyout
+/usr/share/applications/st.desktop
+/usr/share/man/man1/st.1

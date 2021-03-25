@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/sunowsir/Code/1.GitHub/1.my_project/config/slock/build",
+  "command": "/usr/bin/cc  -I/usr/include/X11 -pedantic     -Wall     -Ofast     -O2     -D_DEFAULT_SOURCE     -DHAVE_SHADOW_H     -DVERSION=\\\"1.4\\\"     -D_POSIX_C_SOURCE=200809L -o CMakeFiles/slock.dir/slock.c.o -c /home/sunowsir/Code/1.GitHub/1.my_project/config/slock/slock.c",
+  "file": "/home/sunowsir/Code/1.GitHub/1.my_project/config/slock/slock.c"
+},
+{
+  "directory": "/home/sunowsir/Code/1.GitHub/1.my_project/config/slock/build",
+  "command": "/usr/bin/cc  -I/usr/include/X11 -pedantic     -Wall     -Ofast     -O2     -D_DEFAULT_SOURCE     -DHAVE_SHADOW_H     -DVERSION=\\\"1.4\\\"     -D_POSIX_C_SOURCE=200809L -o CMakeFiles/slock.dir/explicit_bzero.c.o -c /home/sunowsir/Code/1.GitHub/1.my_project/config/slock/explicit_bzero.c",
+  "file": "/home/sunowsir/Code/1.GitHub/1.my_project/config/slock/explicit_bzero.c"
+}
+]

@@ -1,0 +1,1 @@
+/usr/bin/cc -pedantic     -Wall     -O2     -D_DEFAULT_SOURCE     -D_BSD_SOURCE     -D_XOPEN_SOURCE=700     -D_POSIX_C_SOURCE=200809L     -DVERSION=\"5.0\"     -DXINERAMA CMakeFiles/stest.dir/stest.c.o -o stest  -lm -lX11 -lXft -lXinerama -lfontconfig 

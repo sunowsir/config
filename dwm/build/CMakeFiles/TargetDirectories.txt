@@ -1,0 +1,7 @@
+/home/sunowsir/Code/1.GitHub/1.my_project/config/dwm/build/CMakeFiles/install/strip.dir
+/home/sunowsir/Code/1.GitHub/1.my_project/config/dwm/build/CMakeFiles/install/local.dir
+/home/sunowsir/Code/1.GitHub/1.my_project/config/dwm/build/CMakeFiles/install.dir
+/home/sunowsir/Code/1.GitHub/1.my_project/config/dwm/build/CMakeFiles/list_install_components.dir
+/home/sunowsir/Code/1.GitHub/1.my_project/config/dwm/build/CMakeFiles/rebuild_cache.dir
+/home/sunowsir/Code/1.GitHub/1.my_project/config/dwm/build/CMakeFiles/edit_cache.dir
+/home/sunowsir/Code/1.GitHub/1.my_project/config/dwm/build/CMakeFiles/dwm.dir

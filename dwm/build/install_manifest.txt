@@ -1,0 +1,4 @@
+/usr/bin/dwm
+/usr/share/pixmaps/dwm.png
+/usr/share/xsessions/dwm.desktop
+/usr/share/man/man1/dwm.1
