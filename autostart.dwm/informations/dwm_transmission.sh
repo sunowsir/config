@@ -19,7 +19,7 @@ function save_old_date() {
 function refresh_cache() {
     get_bytes
     save_old_date
-    sleep 0.5
+    sleep 0.05
     get_bytes
 }
 

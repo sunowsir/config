@@ -1,4 +1,8 @@
 #!/bin/bash
+DIR="$(dirname "$(readlink -f "$0")")/.."
+export IDENTIFIER="unicode"
+
+source "${DIR}/function/dwm_status_update.sh"
 
 function VOL_TOGGLE_get_status() {
     local item="${1}"
@@ -19,5 +23,6 @@ function VOL_TOGGLE_HANDLE() {
         ;;
     esac
 }
-VOL_TOGGLE_HANDLE
 
+VOL_TOGGLE_HANDLE
+DWM_STATUS_UPDATE

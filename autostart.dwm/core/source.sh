@@ -6,12 +6,9 @@
 #	* Github   : github.com/sunowsir
 #	* Creation : 2021年03月19日 星期五 10时24分58秒
 
-DIR="$(dirname "$(readlink -f "$0")")"
-export IDENTIFIER="unicode"
-
-DWM_DISPLAY_xrandr_cache=""
 
 shopt -s nullglob
+
 for sfname in "${DIR}/informations/"*.sh; do
     source "${sfname}"
 done

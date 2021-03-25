@@ -6,9 +6,6 @@
 #	* Github   : github.com/sunowsir
 #	* Creation : 2021年03月19日 星期五 10时23分34秒
 
-DIR="$(dirname "$(readlink -f "$0")")"
-export IDENTIFIER="unicode"
-
 source "${DIR}/core/source.sh"
 source "${DIR}/config.sh"
 

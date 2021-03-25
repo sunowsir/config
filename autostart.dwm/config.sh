@@ -6,11 +6,7 @@
 #	* Github   : github.com/sunowsir
 #	* Creation : 2021年03月19日 星期五 10时14分51秒
 
-DIR="$(dirname "$(readlink -f "$0")")"
-export IDENTIFIER="unicode"
-
-## Change the following content according to your needs. ##
-
+echo "--config 1"
 # Change the array to setting dwm status bar information.
 DWMBAR_DATA=(
     "$(dwm_memory)"
@@ -20,6 +16,7 @@ DWMBAR_DATA=(
     "$(dwm_date)"
 )
 
+echo "--config 2"
 # Change the variable setting to your favorite theme
 DWMBAR_THEME="default"
 
