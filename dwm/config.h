@@ -100,9 +100,9 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x24"
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 static const char *slockcmd[] = {"slock", NULL};
 
-static const char *upvol[]   = { "/home/sunowsir/.config/autostart.dwm/function/vol-up.sh",  NULL };
-static const char *downvol[] = { "/home/sunowsir/.config/autostart.dwm/function/vol-down.sh",  NULL };
-static const char *mutevol[] = { "/home/sunowsir/.config/autostart.dwm/function/vol-toggle.sh",  NULL };
+static const char *upvol[]   = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "up", NULL };
+static const char *downvol[] = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "down", NULL };
+static const char *mutevol[] = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "toggle", NULL };
 static const char *wpcmd[]  = { "/home/sunowsir/.config/autostart.dwm/function/wp-change.sh", NULL };
 static const char *sktogglecmd[]  = { "/home/sunowsir/.config/autostart.dwm/function/sck-tog.sh", NULL };
 static const char *setcolemakcmd[]  = { "/home/sunowsir/.config/autostart.dwm/function/setxmodmap-colemak.sh", NULL };
