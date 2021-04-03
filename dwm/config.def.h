@@ -100,9 +100,9 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x24"
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 static const char *slockcmd[] = {"slock", NULL};
 
-static const char *upvol[]   = { "/home/sunowsir/.config/autostart.dwm/function/vol-up.sh",  NULL };
-static const char *downvol[] = { "/home/sunowsir/.config/autostart.dwm/function/vol-down.sh",  NULL };
-static const char *mutevol[] = { "/home/sunowsir/.config/autostart.dwm/function/vol-toggle.sh",  NULL };
+static const char *upvol[]   = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "up", NULL };
+static const char *downvol[] = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "down", NULL };
+static const char *mutevol[] = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "toggle", NULL };
 static const char *wpcmd[]  = { "/home/sunowsir/.config/autostart.dwm/function/wp-change.sh", NULL };
 static const char *sktogglecmd[]  = { "/home/sunowsir/.config/autostart.dwm/function/sck-tog.sh", NULL };
 static const char *setcolemakcmd[]  = { "/home/sunowsir/.config/autostart.dwm/function/setxmodmap-colemak.sh", NULL };
@@ -111,7 +111,7 @@ static const char *suspendcmd[]  = { "/home/sunowsir/.config/autostart.dwm/funct
 
 static Key keys[] = {
 	/* modifier            key                      function        argument */
-	{ MODKEY,              XK_s,                    spawn,          {.v = dmenucmd } },
+	{ MODKEY,              XK_space,                spawn,          {.v = dmenucmd } },
 	{ MODKEY,              XK_Return,               spawn,          {.v = termcmd } },
 	{ MODKEY,              XK_c,                    spawn,          {.v = browsercmd } },
 	{ MODKEY|ShiftMask,    XK_w,                    spawn,          {.v = setqwertycmd } },
@@ -148,7 +148,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_t,                    setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,              XK_m,                    setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,    XK_f,                    fullscreen,     {0} },
-	{ MODKEY,              XK_space,                setlayout,      {0} },
+	// { MODKEY,              XK_space,                setlayout,      {0} },
 	{ MODKEY|ShiftMask,    XK_space,                togglefloating, {0} },
 	{ MODKEY,              XK_apostrophe,           togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,              XK_0,                    view,           {.ui = ~0 } },
