@@ -14,20 +14,21 @@ static const unsigned int gappiv    = 5;       /* vert inner gap between windows
 static const unsigned int gappoh    = 5;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 5;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
+static const int besubfh            = 5;        /* The value to be subtracted based on the height of the font: bh = drw->fonts->h - besubfh; */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=16" };
 
 static const char norm_fg_color[]     = "#000000"; 
-static const char norm_bg_color[]     = "#8B8989"; 
-static const char norm_border_color[] = "#8B8989"; 
+static const char norm_bg_color[]     = "#282a36"; 
+static const char norm_border_color[] = "#282a36"; 
 static const char sel_fg_color[]      = "#000000"; 
-static const char sel_bg_color[]      = "#8B8989"; 
-static const char sel_border_color[]  = "#8B8989"; 
+static const char sel_bg_color[]      = "#282a36"; 
+static const char sel_border_color[]  = "#282a36"; 
 static const char hid_fg_color[]      = "#000000"; 
-static const char hid_bg_color[]      = "#528B8B"; 
-static const char hid_border_color[]  = "#528B8B"; 
+static const char hid_bg_color[]      = "#393f60"; 
+static const char hid_border_color[]  = "#393f60"; 
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -36,14 +37,14 @@ static const char *colors[][3]      = {
 	[SchemeHid]     = { hid_fg_color,  hid_bg_color,  hid_border_color  },
 };
 
-static const unsigned int norm_fg_alpha = 0x12c;
-static const unsigned int norm_bg_alpha = 0x12c;
-static const unsigned int norm_border_alpha = 0x12c;
-static const unsigned int sel_fg_alpha = 0x12c;
-static const unsigned int sel_bg_alpha = 0x12c;
-static const unsigned int sel_border_alpha = 0x12c;
+static const unsigned int norm_fg_alpha = 0xFA;
+static const unsigned int norm_bg_alpha = 0xFA;
+static const unsigned int norm_border_alpha = 0xFA;
+static const unsigned int sel_fg_alpha = 0xFA;
+static const unsigned int sel_bg_alpha = 0xFA;
+static const unsigned int sel_border_alpha = 0xFA;
 
-static const unsigned int baralpha = 0x12c;
+static const unsigned int baralpha = 0xFA;
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
 	[SchemeNorm] = { norm_fg_alpha, norm_bg_alpha, norm_border_alpha },
