@@ -37,14 +37,14 @@ static const char *colors[][3]      = {
 	[SchemeHid]     = { hid_fg_color,  hid_bg_color,  hid_border_color  },
 };
 
-static const unsigned int norm_fg_alpha = 0xFA;
-static const unsigned int norm_bg_alpha = 0xFA;
-static const unsigned int norm_border_alpha = 0xFA;
-static const unsigned int sel_fg_alpha = 0xFA;
-static const unsigned int sel_bg_alpha = 0xFA;
-static const unsigned int sel_border_alpha = 0xFA;
+static const unsigned int norm_fg_alpha = 0xD2;
+static const unsigned int norm_bg_alpha = 0xD2;
+static const unsigned int norm_border_alpha = 0xD2;
+static const unsigned int sel_fg_alpha = 0xD2;
+static const unsigned int sel_bg_alpha = 0xD2;
+static const unsigned int sel_border_alpha = 0xD2;
 
-static const unsigned int baralpha = 0xFA;
+static const unsigned int baralpha = 0xD2;
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
 	[SchemeNorm] = { norm_fg_alpha, norm_bg_alpha, norm_border_alpha },

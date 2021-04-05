@@ -16,7 +16,7 @@ DWMBAR_DATA=(
 )
 
 # Change the variable setting to your favorite theme
-DWMBAR_THEME="default"
+DWMBAR_THEME="282a36"
 
 # You don’t need to use ‘&’ to make the command run in the background, 
 # the engine script will automatically run the script you configured in the background.
