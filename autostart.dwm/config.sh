@@ -18,6 +18,9 @@ DWMBAR_DATA=(
 # Change the variable setting to your favorite theme
 DWMBAR_THEME="282a36"
 
+# Change the varable setting to your wallpapers path by feh to auto change.
+WALLPAPERS_PATH="${HOME}/Pictures/wallpapers/"
+
 # You don’t need to use ‘&’ to make the command run in the background, 
 # the engine script will automatically run the script you configured in the background.
 
@@ -33,6 +36,7 @@ DWM_INIT_LIST=(
 # Change the array to set timing tasks.
 DWM_TASK_LIST=(
     'DWMBAR_THEME_Main_Handle "${DWMBAR_THEME}" "${DWMBAR_DATA[@]}" & sleep 1;'
-    'feh --recursive --randomize --bg-fill ~/Pictures/wallpapers/ & sleep 3m;'
+    'feh --recursive --randomize --bg-fill "${WALLPAPERS_PATH}" & sleep 3m;'
 )
+
 
