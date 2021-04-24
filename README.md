@@ -34,6 +34,14 @@
     * `acpilight` (need: `sudo gpasswd video -a 用户名`)
     * `dunst`
     * `ntfs-3g`
+    * `atool`
+    * `highlight`
+    * `poppler`
+    * `mediainfo`
+    * `ffmpegthumbnailer`
+    * `fontforge`
+    * `transmission-cli`
+
 
 
 
