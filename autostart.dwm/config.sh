@@ -30,6 +30,7 @@ DWM_INIT_LIST=(
     'DWM_SETUP_inverse-scroll;'
     'picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b --experimental-backends;'
     'nm-applet;'
+    'blueman-applet;'
     'sleep 2 & fcitx5;'
 )
 
