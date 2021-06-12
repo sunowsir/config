@@ -18,6 +18,10 @@ function VOL_TOGGLE_get_status() {
     echo "${status}"
 }
 
+function VOL_TOGGLE_show_value() {
+    notify-send -u low -t 1000 "$(amixer get Master | tail -n1 | grep -Eo '\S*\%' | sed 's/\[//g')"
+}
+
 function VOL_TOGGLE_HANDLE() {
     local op=""
     local status=""
@@ -33,10 +37,10 @@ function VOL_TOGGLE_HANDLE() {
 
             case "${op}" in 
                 "up")
-                    /usr/bin/amixer -qM set Master 5%+ umute > /dev/null 2>&1
+                    /usr/bin/amixer -qM set Master 1%+ umute > /dev/null 2>&1
                 ;;
                 "down")
-                    /usr/bin/amixer -qM set Master 5%- umute > /dev/null 2>&1
+                    /usr/bin/amixer -qM set Master 1%- umute > /dev/null 2>&1
                 ;;
             esac
         ;;
@@ -56,4 +60,5 @@ function VOL_TOGGLE_HANDLE() {
 }
 
 VOL_TOGGLE_HANDLE "${@}"
+VOL_TOGGLE_show_value
 DWM_STATUS_UPDATE
