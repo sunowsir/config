@@ -42,10 +42,3 @@
     * `fontforge`
     * `transmission-cli`
 
-
-
-
-
-
-
-
