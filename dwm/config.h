@@ -3,10 +3,10 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int borderpx  = 1;        /* 窗口边框像素 */
+static const unsigned int snap      = 100;       /* 捕捉像素 */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 1;   /* 系统托盘间距*/
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
 static const unsigned int gappih    = 6;       /* horiz inner gap between windows */
@@ -27,8 +27,8 @@ static const char sel_fg_color[]      = "#000000";
 static const char sel_bg_color[]      = "#282a36"; 
 static const char sel_border_color[]  = "#282a36"; 
 static const char hid_fg_color[]      = "#000000"; 
-static const char hid_bg_color[]      = "#393f60"; 
-static const char hid_border_color[]  = "#393f60"; 
+static const char hid_bg_color[]      = "#282a36"; 
+static const char hid_border_color[]  = "#282a36"; 
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -37,18 +37,22 @@ static const char *colors[][3]      = {
 	[SchemeHid]     = { hid_fg_color,  hid_bg_color,  hid_border_color  },
 };
 
-static const unsigned int norm_fg_alpha = 0xD2;
-static const unsigned int norm_bg_alpha = 0xD2;
+static const unsigned int norm_fg_alpha     = 0xD2;
+static const unsigned int norm_bg_alpha     = 0xD2;
 static const unsigned int norm_border_alpha = 0xD2;
-static const unsigned int sel_fg_alpha = 0xD2;
-static const unsigned int sel_bg_alpha = 0xD2;
-static const unsigned int sel_border_alpha = 0xD2;
+static const unsigned int sel_fg_alpha      = 0xD2;
+static const unsigned int sel_bg_alpha      = 0xD2;
+static const unsigned int sel_border_alpha  = 0x10;
+static const unsigned int hid_fg_alpha      = 0xD2;
+static const unsigned int hid_bg_alpha      = 0xD2;
+static const unsigned int hid_border_alpha  = 0xD2;
+static const unsigned int baralpha          = 0xD2;
 
-static const unsigned int baralpha = 0xD2;
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
-	[SchemeNorm] = { norm_fg_alpha, norm_bg_alpha, norm_border_alpha },
-	[SchemeSel]  = { sel_fg_alpha,  sel_bg_alpha,  sel_border_alpha  },
+	[SchemeNorm] = { norm_fg_alpha,     norm_bg_alpha, norm_border_alpha },
+	[SchemeSel]  = { sel_fg_alpha,      sel_bg_alpha,  sel_border_alpha  },
+	[SchemeHid]     = { hid_fg_alpha,   hid_bg_alpha,  hid_border_alpha  },
 };
 
 /* tagging */
@@ -60,16 +64,16 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Android Emulator", NULL,       NULL,       0,            1,           -1 },
-	{ "Emulator", NULL,       NULL,       0,            1,           -1 },
-	{ "quemu-system-i386", NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Gimp",               NULL,       NULL,       0,            1,           -1 },
+	{ "Android Emulator",   NULL,       NULL,       0,            1,           -1 },
+	{ "Emulator",           NULL,       NULL,       0,            1,           -1 },
+	{ "quemu-system-i386",  NULL,       NULL,       0,            1,           -1 },
+	{ "google-chrome",      NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
+static const float mfact     = 0.5; /* 主区域大小系数 [0.05..0.95] */
+static const int nmaster     = 1;    /* 主区域客户端的数量 */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
@@ -91,35 +95,31 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
-static const char *termcmd[]  = { "st", NULL };
-static const char *browsercmd[]  = { "google-chrome-stable", NULL };
-static const char *changelightupcmd[] = { "xbacklight", "-inc", "10", NULL };
+static const char *dmenucmd[]           = { "dmenu_run", "-m", dmenumon, NULL };
+static const char *termcmd[]            = { "st", NULL };
+static const char *browsercmd[]         = { "google-chrome-stable", NULL };
+static const char *changelightupcmd[]   = { "xbacklight", "-inc", "10", NULL };
 static const char *changelightdowncmd[] = { "xbacklight", "-dec", "10", NULL };
-static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x24", NULL };
-static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
-static const char *slockcmd[] = {"slock", NULL};
+static const char scratchpadname[]      = "scratchpad";
+static const char *scratchpadcmd[]      = { "st", "-t", scratchpadname, "-g", "80x24", NULL };
+static const char *screenshotcmd[]      = { "flameshot", "gui", NULL };
+static const char *slockcmd[]           = {"slock", NULL};
 
-static const char *upvol[]   = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "up", NULL };
-static const char *downvol[] = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "down", NULL };
-static const char *mutevol[] = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "toggle", NULL };
-static const char *wpcmd[]  = { "/home/sunowsir/.config/autostart.dwm/function/wp-change.sh", NULL };
-static const char *sktogglecmd[]  = { "/home/sunowsir/.config/autostart.dwm/function/sck-tog.sh", NULL };
+static const char *upvol[]          = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "up", NULL };
+static const char *downvol[]        = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "down", NULL };
+static const char *mutevol[]        = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "toggle", NULL };
+static const char *wpcmd[]          = { "/home/sunowsir/.config/autostart.dwm/function/wp-change.sh", NULL };
+static const char *sktogglecmd[]    = { "/home/sunowsir/.config/autostart.dwm/function/sck-tog.sh", NULL };
 static const char *setcolemakcmd[]  = { "/home/sunowsir/.config/autostart.dwm/function/setxmodmap-colemak.sh", NULL };
-static const char *setqwertycmd[]  = { "/home/sunowsir/.config/autostart.dwm/function/setxmodmap-qwerty.sh", NULL };
-static const char *suspendcmd[]  = { "/home/sunowsir/.config/autostart.dwm/function/suspend.sh", NULL };
+static const char *setqwertycmd[]   = { "/home/sunowsir/.config/autostart.dwm/function/setxmodmap-qwerty.sh", NULL };
+static const char *suspendcmd[]     = { "/home/sunowsir/.config/autostart.dwm/function/suspend.sh", NULL };
 
 static Key keys[] = {
 	/* modifier            key                      function        argument */
 	{ MODKEY,              XK_space,                spawn,          {.v = dmenucmd } },
 	{ MODKEY,              XK_Return,               spawn,          {.v = termcmd } },
-	{ MODKEY,              XK_c,                    spawn,          {.v = browsercmd } },
-	{ MODKEY|ShiftMask,    XK_w,                    spawn,          {.v = setqwertycmd } },
-	{ MODKEY|ShiftMask,    XK_m,                    spawn,          {.v = setcolemakcmd } },
 	{ MODKEY|ShiftMask,    XK_p,                    spawn,          {.v = suspendcmd } },
 	{ MODKEY|ControlMask,  XK_s,                    spawn,          {.v = sktogglecmd } },
-	{ MODKEY|ControlMask,  XK_l,                    spawn,          {.v = slockcmd } },
 	{ 0,                   XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },
 	{ 0,                   XF86XK_AudioMute,        spawn,          {.v = mutevol } },
 	{ 0,                   XF86XK_AudioRaiseVolume, spawn,          {.v = upvol   } },
@@ -127,37 +127,27 @@ static Key keys[] = {
 	{ 0,                   XF86XK_MonBrightnessDown,spawn,          {.v = changelightdowncmd } },
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
 	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
-	{ MODKEY|ShiftMask,    XK_e,                    rotatestack,    {.i = +1 } },
-	{ MODKEY|ShiftMask,    XK_u,                    rotatestack,    {.i = -1 } },
-	{ MODKEY,              XK_e,                    focusstack,     {.i = +1 } },
-	{ MODKEY,              XK_u,                    focusstack,     {.i = -1 } },
-	{ MODKEY,              XK_n,                    viewtoleft,     {0} },
-	{ MODKEY,              XK_i,                    viewtoright,    {0} },
-	{ MODKEY|ShiftMask,    XK_n,                    tagtoleft,      {0} },
-	{ MODKEY|ShiftMask,    XK_i,                    tagtoright,     {0} },
-	{ MODKEY|ShiftMask,    XK_h,                    incnmaster,     {.i = +1 } },
-	{ MODKEY|ShiftMask,    XK_l,                    incnmaster,     {.i = -1 } },
-	{ MODKEY,              XK_h,                    setmfact,       {.f = -0.05} },
-	{ MODKEY,              XK_l,                    setmfact,       {.f = +0.05} },
-	{ MODKEY,              XK_k,                    hidewin,        {0} },
-	{ MODKEY|ShiftMask,    XK_k,                    restorewin,     {0} },
+	{ MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } },
+	{ MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },
+	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
+	{ MODKEY,              XK_k,                    focusstack,     {.i = -1 } },
+	{ MODKEY,              XK_h,                    viewtoleft,     {0} },
+	{ MODKEY,              XK_l,                    viewtoright,    {0} },
+	{ MODKEY|ShiftMask,    XK_h,                    tagtoleft,      {0} },
+	{ MODKEY|ShiftMask,    XK_l,                    tagtoright,     {0} },
+	{ MODKEY,              XK_t,                    incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,    XK_t,                    incnmaster,     {.i = -1 } },
+	{ MODKEY|ControlMask,  XK_h,                    setmfact,       {.f = -0.05} },
+	{ MODKEY|ControlMask,  XK_l,                    setmfact,       {.f = +0.05} },
+	{ MODKEY,              XK_m,                    hidewin,        {0} },
+	{ MODKEY|ShiftMask,    XK_m,                    restorewin,     {0} },
 	{ MODKEY,              XK_o,                    hideotherwins,  {0}},
 	{ MODKEY|ShiftMask,    XK_o,                    restoreotherwins, {0}},
 	{ MODKEY|ShiftMask,    XK_Return,               zoom,           {0} },
 	{ MODKEY,              XK_Tab,                  view,           {0} },
 	{ MODKEY|ShiftMask,    XK_q,                    killclient,     {0} },
-	{ MODKEY,              XK_t,                    setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,              XK_m,                    setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,    XK_f,                    fullscreen,     {0} },
-	// { MODKEY,              XK_space,                setlayout,      {0} },
-	{ MODKEY|ShiftMask,    XK_space,                togglefloating, {0} },
 	{ MODKEY,              XK_apostrophe,           togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY,              XK_0,                    view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,    XK_0,                    tag,            {.ui = ~0 } },
-	{ MODKEY,              XK_comma,                focusmon,       {.i = -1 } },
-	{ MODKEY,              XK_period,               focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,    XK_comma,                tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,    XK_period,               tagmon,         {.i = +1 } },
 	TAGKEYS(               XK_1,                      0)
 	TAGKEYS(               XK_2,                      1)
 	TAGKEYS(               XK_3,                      2)
