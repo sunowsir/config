@@ -28,7 +28,6 @@ include_directories(
 add_executable(st
     ./st.c
     ./x.c
-    ./hb.c
 )
 
 target_link_libraries(st
@@ -45,18 +44,6 @@ target_link_libraries(st
 
 install(TARGETS st
     RUNTIME DESTINATION bin
-)
-
-install(FILES
-    st-copyout DESTINATION bin
-    PERMISSIONS 
-        OWNER_READ 
-        OWNER_WRITE 
-        OWNER_EXECUTE 
-        GROUP_READ 
-        GROUP_EXECUTE 
-        WORLD_READ
-        WORLD_EXECUTE
 )
 
 install(FILES
