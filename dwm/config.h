@@ -3,22 +3,65 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* 窗口边框像素 */
-static const unsigned int snap      = 100;       /* 捕捉像素 */
-static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 1;   /* 系统托盘间距*/
-static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
-static const unsigned int gappih    = 6;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 6;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 6;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 6;       /* vert outer gap between windows and screen edge */
-static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
-static const int besubfh            = 5;        /* The value to be subtracted based on the height of the font: bh = drw->fonts->h - besubfh; */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
-static const Bool viewontag         = True;     /* Switch view on tag switch */
+
+/* 窗口边框像素 */
+static const unsigned int borderpx  = 1;        
+
+/* 捕捉像素 */
+static const unsigned int snap      = 100;       
+
+/* 0: sloppy systray follows selected monitor, 
+ * >0: pin systray to monitor X 
+ * */
+static const unsigned int systraypinning = 0;   
+
+/* 系统托盘间距*/
+static const unsigned int systrayspacing = 1;   
+
+/* 1: if pinning fails, 
+ * display systray on the first monitor, 
+ * False: display systray on the last monitor
+ * */
+static const int systraypinningfailfirst = 1;   
+
+/* 0 means no systray */
+static const int showsystray        = 1;     
+
+/* horiz inner gap between windows */
+static const unsigned int gappih    = 6;       
+
+/* vert inner gap between windows */
+static const unsigned int gappiv    = 6;       
+
+/* horiz outer gap between windows and screen edge */
+static const unsigned int gappoh    = 6;       
+
+/* vert outer gap between windows and screen edge */
+static const unsigned int gappov    = 6;       
+
+/* 1 means no outer gap when there is only one window */
+static const int smartgaps          = 0;        
+
+/* The value to be subtracted based on the height of the font: bh = drw->fonts->h - besubfh; */
+static const int besubfh            = 5;        
+
+/* 0 means no bar */
+static const int showbar            = 1;        
+
+/* 0 means bottom bar */
+static const int topbar             = 1;        
+
+/* Switch view on tag switch */
+static const Bool viewontag         = True;     
+
+/* 字体列表 */
 static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=16" };
+
+/* 是否显示状态栏窗口管理方式 */
+static const int showlayout         = 0;
+
+/* 是否在状态栏显示客户端 */ 
+static const int showclient         = 0;
 
 static const char norm_fg_color[]     = "#000000"; 
 static const char norm_bg_color[]     = "#282a36"; 

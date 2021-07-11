@@ -1014,18 +1014,22 @@ drawbar(Monitor *m)
 
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
+        /* 状态栏最左边显示工作区编号*/
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
 		x += w;
 	}
 	w = blw = TEXTW(m->ltsymbol);
 	drw_setscheme(drw, scheme[SchemeNorm]);
-	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
+
+    /* 状态栏左边显示窗口管理方式（平铺，悬浮）*/
+    if (showlayout == 1) 
+	    x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
 	if ((w = m->ww - tw - stw - x) > bh) {
 		if (n > 0) {
 			int remainder = w % n;
 			int tabw = (1.0 / (double)n) * (w + stw);
-			for (c = m->clients; c; c = c->next) {
+			for (c = m->clients; (showclient == 1) && (c); c = c->next) {
 				if (!ISVISIBLE(c))
 					continue;
 				if (m->sel == c)
