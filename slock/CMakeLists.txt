@@ -15,12 +15,15 @@ SET(CMAKE_C_FLAGS
     -D_DEFAULT_SOURCE \
     -DHAVE_SHADOW_H \
     -DVERSION=${VERSION} \
-    -D_POSIX_C_SOURCE=200809L"
+    -D_POSIX_C_SOURCE=200809L \
+    -DXINERAMA \
+    "
 CACHE STRING "" FORCE)
 
 include_directories( 
     /usr/include
     /usr/include/X11 
+    /usr/include/freetype2 
 )
 
 add_executable(slock
@@ -31,6 +34,7 @@ add_executable(slock
 target_link_libraries(slock
     c
     X11 
+    Xft 
     Xext
     crypt
     Xrandr

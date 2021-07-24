@@ -1,3 +1,3 @@
 #!/bin/bash
-
-systemctl suspend
+slock & 
+sleep 5 && systemctl suspend 

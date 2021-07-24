@@ -12,7 +12,7 @@ static const char *colorname[NUMCOLS] = {
 static const int failonclear = 1;
 
 /* default message */
-static const char * message = "The screen is locked, come back soon!";
+static const char * message = "";
 
 /* text color */
 static const char * text_color = "#000000";// "#ffffff";
@@ -23,8 +23,29 @@ static const char * font_name = "-adobe-new century schoolbook-medium-r-normal--
 /*Enable blur*/
 #define BLUR
 /*Set blur radius*/
-static const int blurRadius=5;
+static const int blurRadius=50;
 /*Enable Pixelation*/
 #define PIXELATION
 /*Set pixelation radius*/
 static const int pixelSize=1;
+
+
+/* insert grid pattern with scale 1:1, the size can be changed with logosize */
+static const int logosize = 80;
+/* grid width and height for right center alignment */
+static const int logow = 12;
+static const int logoh = 6;
+
+static XRectangle rectangles[9] = {
+	/* x    y       w       h */
+	{ 0,    3,      1,      3 },
+	{ 1,    3,      2,      1 },
+	{ 0,    5,      8,      1 },
+	{ 3,    0,      1,      5 },
+	{ 5,    3,      1,      2 },
+	{ 7,    3,      1,      2 },
+	{ 8,    3,      4,      1 },
+	{ 9,    4,      1,      2 },
+	{ 11,   4,      1,      2 },
+};
+
