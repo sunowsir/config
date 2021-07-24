@@ -159,38 +159,79 @@ static const char *suspendcmd[]     = { "/home/sunowsir/.config/autostart.dwm/fu
 
 static Key keys[] = {
 	/* modifier            key                      function        argument */
+
+    /* 启动dmenu */
 	{ MODKEY,              XK_space,                spawn,          {.v = dmenucmd } },
+
+    /* 启动 st终端 */
 	{ MODKEY,              XK_Return,               spawn,          {.v = termcmd } },
+
+    /* 休眠 */
 	{ MODKEY|ShiftMask,    XK_p,                    spawn,          {.v = suspendcmd } },
+
+    /* 启动或关闭 screenkey */
 	{ MODKEY|ControlMask,  XK_s,                    spawn,          {.v = sktogglecmd } },
+
+    /* 音量以及亮度特定功能键 */
 	{ 0,                   XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },
 	{ 0,                   XF86XK_AudioMute,        spawn,          {.v = mutevol } },
 	{ 0,                   XF86XK_AudioRaiseVolume, spawn,          {.v = upvol   } },
 	{ 0,                   XF86XK_MonBrightnessUp,  spawn,          {.v = changelightupcmd } },
 	{ 0,                   XF86XK_MonBrightnessDown,spawn,          {.v = changelightdowncmd } },
+
+    /* 切换壁纸 */
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
+
+    /* 截屏 */
 	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
+
+    /* 调整当前窗口优先级 */
 	{ MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },
+    /* 优先级提升至最高*/
+	{ MODKEY|ShiftMask,    XK_Return,               zoom,           {0} },
+
+    /* 聚焦窗口*/
 	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
 	{ MODKEY,              XK_k,                    focusstack,     {.i = -1 } },
+
+    /* 切换桌面*/
 	{ MODKEY,              XK_h,                    viewtoleft,     {0} },
 	{ MODKEY,              XK_l,                    viewtoright,    {0} },
+
+    /* 移动窗口到上一个或下一个桌面*/
 	{ MODKEY|ShiftMask,    XK_h,                    tagtoleft,      {0} },
 	{ MODKEY|ShiftMask,    XK_l,                    tagtoright,     {0} },
+
+    /* 调整窗口布局*/
 	{ MODKEY,              XK_t,                    incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_t,                    incnmaster,     {.i = -1 } },
+
+    /* 向左或向右调整占用面积, (仅限纵向布局)*/
 	{ MODKEY|ControlMask,  XK_h,                    setmfact,       {.f = -0.05} },
 	{ MODKEY|ControlMask,  XK_l,                    setmfact,       {.f = +0.05} },
+
+    /* 隐藏窗口与恢复 */
 	{ MODKEY,              XK_m,                    hidewin,        {0} },
 	{ MODKEY|ShiftMask,    XK_m,                    restorewin,     {0} },
 	{ MODKEY,              XK_o,                    hideotherwins,  {0}},
-	{ MODKEY|ShiftMask,    XK_o,                    restoreotherwins, {0}},
-	{ MODKEY|ShiftMask,    XK_Return,               zoom,           {0} },
+	{ MODKEY|ShiftMask,    XK_o,                    restoreotherwins, {1}},
+
+    /* 在当前与最近一次浏览的桌面之间切换*/
 	{ MODKEY,              XK_Tab,                  view,           {0} },
+
+    /* 关闭当前窗口 */
 	{ MODKEY,              XK_q,                    killclient,     {0} },
+
+    /* 全屏 */
 	{ MODKEY|ShiftMask,    XK_f,                    fullscreen,     {0} },
+
+    /* 临时悬浮终端 */
 	{ MODKEY,              XK_apostrophe,           togglescratch,  {.v = scratchpadcmd } },
+
+    /* 退出dwm */
+	{ MODKEY|ControlMask,  XK_q,      quit,           {0} },
+
 	TAGKEYS(               XK_1,                      0)
 	TAGKEYS(               XK_2,                      1)
 	TAGKEYS(               XK_3,                      2)
@@ -200,24 +241,28 @@ static Key keys[] = {
 	TAGKEYS(               XK_7,                      6)
 	TAGKEYS(               XK_8,                      7)
 	TAGKEYS(               XK_9,                      8)
-	{ MODKEY|ControlMask,  XK_q,      quit,           {0} },
 };
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button1,        togglewin,      {0} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
-	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkTagBar,            0,              Button1,        view,           {0} },
-	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+// 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+// 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+//     
+// 	{ ClkWinTitle,          0,              Button1,        togglewin,      {0} },
+// 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+// 
+// 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+//     
+// 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+// 
+// 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+//     
+// 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+ 	{ ClkTagBar,            0,              Button1,        view,           {0} },
+// 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
+// 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+// 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
 
