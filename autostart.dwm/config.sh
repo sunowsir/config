@@ -26,18 +26,20 @@ WALLPAPERS_PATH="${HOME}/Pictures/wallpapers/"
 
 # Change the array to set the initialization command.
 DWM_INIT_LIST=(
-    'sleep 1 & DWM_DISPLAY_set;'
-    'DWM_SETUP_inverse-scroll;'
+    'DWM_DISPLAY_set;'
     'picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b --experimental-backends;'
+    'sleep 1 && feh --recursive --randomize --bg-fill "${WALLPAPERS_PATH}";'
+    'DWM_SETUP_inverse-scroll;'
     'nm-applet;'
     'blueman-applet;'
-    'sleep 2 & fcitx5;'
+    'sleep 2 && fcitx5;'
 )
 
 # Change the array to set timing tasks.
 DWM_TASK_LIST=(
-    'DWMBAR_THEME_Main_Handle "${DWMBAR_THEME}" "${DWMBAR_DATA[@]}" & sleep 1;'
-    'feh --recursive --randomize --bg-fill "${WALLPAPERS_PATH}" & sleep 3m;'
+    'DWMBAR_THEME_Main_Handle "${DWMBAR_THEME}" "${DWMBAR_DATA[@]}" && sleep 2;'
+    'feh --recursive --randomize --bg-fill "${WALLPAPERS_PATH}" && sleep 3m;'
+    'dwm_battery_warning && sleep 1m;'
 )
 
 
