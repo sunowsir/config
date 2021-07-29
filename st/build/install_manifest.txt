@@ -1,3 +1,0 @@
-/usr/bin/st
-/usr/share/applications/st.desktop
-/usr/share/man/man1/st.1

@@ -1,1 +1,0 @@
-/usr/bin/cc -O1     -O2     -Wall     -D_XOPEN_SOURCE=600     -DVERSION=\"0.8.3\"     -fomit-frame-pointer CMakeFiles/st.dir/st.c.o CMakeFiles/st.dir/x.c.o -o st  -lm -lrt -lX11 -lXft -lutil -lXrender -lfreetype -lharfbuzz -lfontconfig 
