@@ -1,5 +1,3 @@
-dwm
-*.o
 .ccls-cache/
 .cache
 build
