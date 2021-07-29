@@ -26,9 +26,9 @@ WALLPAPERS_PATH="${HOME}/Pictures/wallpapers/"
 
 # Change the array to set the initialization command.
 DWM_INIT_LIST=(
-    'DWM_DISPLAY_set;'
-    'picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b --experimental-backends;'
-    'sleep 1 && feh --recursive --randomize --bg-fill "${WALLPAPERS_PATH}";'
+    'picom -o 0.95 -i 0.88 --detect-rounded-corners -f -D 5 -c -b --experimental-backends;'
+    'sleep 1 && DWM_DISPLAY_set;'
+    'sleep 2 && feh --recursive --randomize --bg-fill "${WALLPAPERS_PATH}";'
     'DWM_SETUP_inverse-scroll;'
     'nm-applet;'
     'blueman-applet;'
