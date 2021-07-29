@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/sunowsir/Code/2.github/1.my_project/config/st/build",
+  "command": "/usr/bin/cc  -I/usr/include/X11 -I/usr/include/libpng16 -I/usr/include/glib-2.0 -I/usr/include/harfbuzz -I/usr/include/freetype2 -I/usr/lib/glib-2.0/include -O1     -O2     -Wall     -D_XOPEN_SOURCE=600     -DVERSION=\\\"0.8.3\\\"     -fomit-frame-pointer -o CMakeFiles/st.dir/st.c.o -c /home/sunowsir/Code/2.github/1.my_project/config/st/st.c",
+  "file": "/home/sunowsir/Code/2.github/1.my_project/config/st/st.c"
+},
+{
+  "directory": "/home/sunowsir/Code/2.github/1.my_project/config/st/build",
+  "command": "/usr/bin/cc  -I/usr/include/X11 -I/usr/include/libpng16 -I/usr/include/glib-2.0 -I/usr/include/harfbuzz -I/usr/include/freetype2 -I/usr/lib/glib-2.0/include -O1     -O2     -Wall     -D_XOPEN_SOURCE=600     -DVERSION=\\\"0.8.3\\\"     -fomit-frame-pointer -o CMakeFiles/st.dir/x.c.o -c /home/sunowsir/Code/2.github/1.my_project/config/st/x.c",
+  "file": "/home/sunowsir/Code/2.github/1.my_project/config/st/x.c"
+}
+]

@@ -5,9 +5,6 @@
 # GNU GPLv3
 
 function DWM_DISPLAY_get() {
-    DWM_DISPLAY_Device=()
-    DWM_DISPLAY_Resolution=()
-
     local awk_reso_flag=1;
     local cmd=""
     
@@ -18,35 +15,44 @@ function DWM_DISPLAY_get() {
                 reso_flag = 0;
                 device = $1;
             } 
-            if ($1 ~ /^[0-9]*x[0-9]*/ && reso_flag == 0) {
-                reso_flag = 1;
-                resolution = $1;
-                printf("DWM_DISPLAY_Device[${#DWM_DISPLAY_Device[*]}]=\"%s\"; DWM_DISPLAY_Resolution[${#DWM_DISPLAY_Resolution[*]}]=\"%s\";", device, resolution);
+
+            resolution = $1;
+
+            if ($1 ~ /^[0-9]*x[0-9]*/) {
+                if (reso_flag == 0) {
+                    reso_flag = 1;
+                    printf("DWM_DISPLAY_Device[${#DWM_DISPLAY_Device[*]}]=\"%s\";", device);
+                } 
+                printf("DWM_DISPLAY_Resolution[\"%s\"]=\"${DWM_DISPLAY_Resolution[\"%s\"]} %s\";", device, device, resolution);
             } 
         } 
     }')
     
-    echo "${cmd}"
+    echo "declare -A DWM_DISPLAY_Resolution; ${cmd}"
 }
 
 function DWM_DISPLAY_set() {
     eval "$(DWM_DISPLAY_get)"
 
-    local cmd_head="xrandr --output "
+    local cmd_head="xrandr --output"
 
     for i in "${!DWM_DISPLAY_Device[@]}"; do
         local cmd="${cmd_head}"
         local device="${DWM_DISPLAY_Device[${i}]}"
-        local resolution="${DWM_DISPLAY_Resolution[${i}]}"
+        local resolution="0x0"
 
-        cmd="${cmd}${device}"
-        cmd="${cmd} --mode ${resolution}"
+        for reso in ${DWM_DISPLAY_Resolution["${device}"]}; do
+            local f_now="$(echo "${resolution}" | sed 's/x[0-9]*//g')"
+            local f_new="$(echo "${reso}" | sed 's/x[0-9]*//g')"
+            if [[ ${f_new} -ge ${f_now} ]]; then
+                resolution="${reso}"
+            fi
+        done
 
-        echo "${device}"
-        eval "${cmd}"
+        eval "${cmd} ${device} --mode ${resolution} --auto"
     done
 
-    xrandr --output DP1 --right-of eDP1 --auto
+    # xrandr --output DP1 --right-of eDP1 --auto
 }
 
 # xrandr --auto --output DP-2 --same-as eDP-1 --size 1920x1080
