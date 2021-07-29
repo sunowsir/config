@@ -1,4 +1,5 @@
-*.orig
-*.rej
+dwm
 *.o
-st
+.ccls-cache/
+.cache
+build
