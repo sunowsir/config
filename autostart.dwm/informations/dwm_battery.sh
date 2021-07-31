@@ -8,22 +8,28 @@ dwm_battery () {
     # Change BAT1 to whatever your battery is identified as. Typically BAT0 or BAT1
     CHARGE=$(cat /sys/class/power_supply/BAT0/capacity 2> /dev/null)
     STATUS=$(cat /sys/class/power_supply/BAT0/status 2> /dev/null)
-    if [ "${CHARGE}" != "" ]; then
-        CHARGE="${CHARGE}%"
-    fi
-
-    local info="${SEP1}"
     
-    if [[ "$IDENTIFIER" != "unicode" ]]; then
-        echo -en "${info}BAT ${CHARGE}"
-        return "${?}"
+    local logo="BAT"
+    if [[ "$IDENTIFIER" = "unicode" ]] ; then
+
+        logo="ﮣ"
+        if [[ "$STATUS" = "Discharging" ]]; then
+
+            [[ ${CHARGE} -gt 0 ]] && [[ ${CHARGE} -le 10 ]] &&
+                logo="";
+            [[ ${CHARGE} -gt 10 ]] && [[ ${CHARGE} -le 40 ]] &&
+                logo="";
+            [[ ${CHARGE} -gt 40 ]] && [[ ${CHARGE} -le 60 ]] &&
+                logo="";
+            [[ ${CHARGE} -gt 60 ]] && [[ ${CHARGE} -le 95 ]] &&
+                logo=""; 
+            [[ ${CHARGE} -gt 95 ]] &&
+                logo=""
+
+        fi
     fi
 
-    local logo="🔌"
-    [[ "$STATUS" = "Discharging" ]] && 
-        logo="🔋"
-
-    echo -en "${info}${logo} ${CHARGE:?}"
+    echo -en "${logo} ${CHARGE:?}%"
     return "${?}"
 }
 
@@ -32,12 +38,8 @@ dwm_battery_warning() {
     CHARGE=$(cat /sys/class/power_supply/BAT0/capacity 2> /dev/null)
     STATUS=$(cat /sys/class/power_supply/BAT0/status 2> /dev/null)
     
-    echo "${CHARGE}"
-    if [[ "${STATUS}" = "Discharging" ]] && 
-       [[ ${CHARGE} -le 70 ]]; then
-        notify-send -u critical -t 10000 "🔌 电量过低"
-    fi
+    [[ "${STATUS}" = "Discharging" ]] && 
+        [[ ${CHARGE} -le 10 ]] &&
+        notify-send -u critical -t 10000 "ﮣ 电量过低"
     
 }
-
-dwm_battery_warning

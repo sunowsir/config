@@ -11,7 +11,7 @@ dwm_memory(){
 	local memfree_Mb=$(( $( grep -m1 'MemAvailable:' /proc/meminfo | awk '{print $2}') / 1024 ))
 
     if [ "$IDENTIFIER" = "unicode" ]; then
-	    echo -ne "💿 "
+	    echo -ne " "
     else 
 	    echo -ne "MEM "
     fi

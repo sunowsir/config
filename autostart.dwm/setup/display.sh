@@ -52,7 +52,7 @@ function DWM_DISPLAY_set() {
         eval "${cmd} ${device} --mode ${resolution} --auto"
     done
 
-    # xrandr --output DP1 --right-of eDP1 --auto
+    xrandr --output DP1 --right-of eDP1 --auto
 }
 
 # xrandr --auto --output DP-2 --same-as eDP-1 --size 1920x1080
