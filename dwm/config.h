@@ -1,4 +1,5 @@
-#include <X11/XF86keysym.h>
+#include "dwm.h"
+
 
 /* See LICENSE file for copyright and license details. */
 
@@ -55,7 +56,7 @@ static const int topbar             = 1;
 static const Bool viewontag         = True;     
 
 /* 字体列表 */
-static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=16" };
+const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=16" };
 
 /* 是否显示状态栏窗口管理方式 */
 static const int showlayout         = 0;
@@ -73,7 +74,7 @@ static const char hid_fg_color[]      = "#000000";
 static const char hid_bg_color[]      = "#282a36"; 
 static const char hid_border_color[]  = "#282a36"; 
 
-static const char *colors[][3]      = {
+const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm]    = { norm_fg_color, norm_bg_color, norm_border_color },
 	[SchemeSel]     = { sel_fg_color,  sel_bg_color,  sel_border_color  },
@@ -100,7 +101,7 @@ static const unsigned int alphas[][3]      = {
 
 /* tagging */
 // static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
-static const char *tags[] = { "", "", "ﬄ", "", "", "六", "七", "八", "九" };
+const char *tags[] = { "", "", "ﬄ", "", "", "六", "七", "八", "九" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -141,24 +142,20 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]           = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]            = { "st", NULL };
-static const char *browsercmd[]         = { "google-chrome-stable", NULL };
 static const char *changelightupcmd[]   = { "xbacklight", "-inc", "10", NULL };
 static const char *changelightdowncmd[] = { "xbacklight", "-dec", "10", NULL };
 static const char scratchpadname[]      = "scratchpad";
 static const char *scratchpadcmd[]      = { "st", "-t", scratchpadname, "-g", "80x24", NULL };
 static const char *screenshotcmd[]      = { "flameshot", "gui", NULL };
-static const char *slockcmd[]           = {"slock", NULL};
 
 static const char *upvol[]          = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "up", NULL };
 static const char *downvol[]        = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "down", NULL };
 static const char *mutevol[]        = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "toggle", NULL };
 static const char *wpcmd[]          = { "/home/sunowsir/.config/autostart.dwm/function/wp-change.sh", NULL };
 static const char *sktogglecmd[]    = { "/home/sunowsir/.config/autostart.dwm/function/sck-tog.sh", NULL };
-static const char *setcolemakcmd[]  = { "/home/sunowsir/.config/autostart.dwm/function/setxmodmap-colemak.sh", NULL };
-static const char *setqwertycmd[]   = { "/home/sunowsir/.config/autostart.dwm/function/setxmodmap-qwerty.sh", NULL };
 static const char *suspendcmd[]     = { "/home/sunowsir/.config/autostart.dwm/function/suspend.sh", NULL };
 
-static Key keys[] = {
+Key keys[] = {
 	/* modifier            key                      function        argument */
 
     /* 启动dmenu */
@@ -195,6 +192,11 @@ static Key keys[] = {
     /* 聚焦窗口*/
 	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
 	{ MODKEY,              XK_k,                    focusstack,     {.i = -1 } },
+
+
+    /* 切换当前聚焦的监视器 */
+	{ MODKEY|ControlMask,  XK_j,                    focusmon,       {.i = -1} },
+	{ MODKEY|ControlMask,  XK_k,                    focusmon,       {.i = +1} },
 
     /* 切换桌面*/
 	{ MODKEY,              XK_h,                    viewtoleft,     {0} },
@@ -246,7 +248,7 @@ static Key keys[] = {
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
-static Button buttons[] = {
+Button buttons[] = {
 	/* click                event mask      button          function        argument */
 // 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 // 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
