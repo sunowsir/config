@@ -1,70 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-#include <ctype.h>
-#include <locale.h>
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include <time.h>
-#include <unistd.h>
-
-#include <X11/Xlib.h>
-#include <X11/Xatom.h>
-#include <X11/Xutil.h>
-#ifdef XINERAMA
-#include <X11/extensions/Xinerama.h>
-#endif
-#include <X11/Xft/Xft.h>
-
-#include "drw.h"
-#include "util.h"
-
-/* macros */
-#define INTERSECT(x,y,w,h,r)  (MAX(0, MIN((x)+(w),(r).x_org+(r).width)  - MAX((x),(r).x_org)) \
-                             * MAX(0, MIN((y)+(h),(r).y_org+(r).height) - MAX((y),(r).y_org)))
-#define LENGTH(X)             (sizeof X / sizeof X[0])
-#define TEXTW(X)              (drw_fontset_getwidth(drw, (X)) + lrpad)
-#define NUMBERSMAXDIGITS      100
-#define NUMBERSBUFSIZE        (NUMBERSMAXDIGITS * 2) + 1
-
-/* enums */
-enum { SchemeNorm, SchemeSel, SchemeHp, SchemeOut, SchemeLast }; /* color schemes */
-
-struct item {
-	char *text;
-	struct item *left, *right;
-	int out, hp;
-	double distance;
-};
-
-static char numbers[NUMBERSBUFSIZE] = "";
-static char **hpitems = NULL;
-static int hplength = 0;
-static char text[BUFSIZ] = "";
-static char *embed;
-static int bh, mw, mh;
-static int inputw = 0, promptw;
-static int lrpad; /* sum of left and right padding */
-static size_t cursor;
-static struct item *items = NULL;
-static struct item *matches, *matchend;
-static struct item *prev, *curr, *next, *sel;
-static int mon = -1, screen;
-
-static Atom clip, utf8;
-static Display *dpy;
-static Window root, parentwin, win;
-static XIC xic;
-
-static Drw *drw;
-static Clr *scheme[SchemeLast];
-
 #include "config.h"
-
-static char * cistrstr(const char *s, const char *sub);
-static int (*fstrncmp)(const char *, const char *, size_t) = strncasecmp;
-static char *(*fstrstr)(const char *, const char *) = cistrstr;
 
 static char**
 tokenize(char *source, const char *delim, int *llen) {
@@ -149,7 +84,7 @@ cleanup(void)
 	XCloseDisplay(dpy);
 }
 
-static char *
+char *
 cistrstr(const char *s, const char *sub)
 {
 	size_t len;
@@ -798,7 +733,7 @@ setup(void)
 		/* no focused window is on screen, so use pointer location instead */
 		if (mon < 0 && !area && XQueryPointer(dpy, root, &dw, &dw, &x, &y, &di, &di, &du))
 			for (i = 0; i < n; i++)
-				if (INTERSECT(x, y, 1, 1, info[i]))
+				if (INTERSECT(x, y, 1, 1, info[i]) != 0)
 					break;
 
 		if (centered) {

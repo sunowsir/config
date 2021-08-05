@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include "dmenu_sys_api.h"
 
 typedef struct {
 	Cursor cursor;
