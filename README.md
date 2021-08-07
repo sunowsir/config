@@ -41,4 +41,7 @@
     * `ffmpegthumbnailer`
     * `fontforge`
     * `transmission-cli`
+    * `exfat-utils`
 
+* Screenshots
+    ![Screenshots](./cut.png)
