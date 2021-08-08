@@ -45,3 +45,8 @@
 
 * Screenshots
     ![Screenshots](./cut.png)
+
+* todo 
+    - [ ] 状态栏刷新残留
+    - [ ] 无窗口的时候执行切换聚焦快捷键 `dwm` 崩溃
+    - [ ] `systray` 违和（包括颜色与状态栏不匹配以及偶尔不透明）

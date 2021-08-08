@@ -22,6 +22,7 @@
  */
 
 /* configuration, allows nested code to access above variables */
+#include "Xlib.h"
 #include "config.h"
 
 struct Pertag {
