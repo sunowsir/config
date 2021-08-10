@@ -851,6 +851,10 @@ focusstack(const Arg *arg)
 {
 	Client *c = NULL, *i;
 
+	if (isnohavewin(arg)) {
+		return;
+	}
+
 	if (issinglewin(arg)) {
 		focuswin(arg);
 		return;
@@ -2113,6 +2117,21 @@ int issinglewin(const Arg *arg) {
 			cot++;
 		}
 		if (cot > 1) {
+			return 0;
+		}
+	}
+	return 1;
+}
+
+int isnohavewin(const Arg *arg) {
+	Client *c = NULL;
+	int cot = 0;
+	int tag = selmon->tagset[selmon->seltags];
+	for (c = selmon->clients; c; c = c->next) {
+		if (ISVISIBLE(c) && !HIDDEN(c) && c->tags == tag) {
+			cot++;
+		}
+		if (cot >= 1) {
 			return 0;
 		}
 	}

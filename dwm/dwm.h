@@ -239,6 +239,7 @@ int xerrorstart(Display *dpy, XErrorEvent *ee);
 void xinitvisual();
 void zoom(const Arg *arg);
 int issinglewin(const Arg *arg);
+int isnohavewin(const Arg *arg);
 
 /* variables */
 Systray *systray =  NULL;
