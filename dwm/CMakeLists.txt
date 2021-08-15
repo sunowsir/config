@@ -7,6 +7,8 @@ set(C_STANDARD 99)
 set(VERSION "\\\"6.2\\\"")
 set(CMAKE_INSTALL_PREFIX "/usr")
 set(CMAKE_LIBRARY_PATH "/usr/lib/X11")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+
 SET(CMAKE_C_FLAGS 
     "-pedantic \
     -Wall \
@@ -22,13 +24,12 @@ CACHE STRING "" FORCE)
 include_directories( 
     /usr/include/X11 
     /usr/include/freetype2 
+    ${PROJECT_SOURCE_DIR}/include
 )
 
-add_executable(dwm
-    ./drw.c
-    ./dwm.c
-    ./util.c
-)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR} DIR_SOURCE)
+AUX_SOURCE_DIRECTORY(src DIR_SOURCE)
+ADD_EXECUTABLE(dwm ${DIR_SOURCE})
 
 target_link_libraries(dwm
     X11 
