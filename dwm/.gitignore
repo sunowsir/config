@@ -3,3 +3,4 @@ dwm
 .ccls-cache/
 .cache
 build
+bin

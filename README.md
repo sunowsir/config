@@ -42,6 +42,7 @@
     * `fontforge`
     * `transmission-cli`
     * `exfat-utils`
+    * `rofi`
 
 * Screenshots
     ![Screenshots](./cut.png)

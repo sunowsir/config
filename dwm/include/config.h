@@ -101,7 +101,8 @@ static const unsigned int alphas[][3]      = {
 
 /* tagging */
 // static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
-const char *tags[] = { "", "", "ﬄ", "", "", "六", "七", "八", "九" };
+// const char *tags[] = { "", "", "ﬄ", "", "", "六", "七", "八", "九" };
+const char *tags[] = { "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -139,8 +140,9 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]           = { "dmenu_run", "-m", dmenumon, NULL };
+// static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+// static const char *dmenucmd[]           = { "dmenu_run", "-m", dmenumon, NULL };
+static const char *roficmd[]            = { "rofi", "-show", "drun", "-theme", "sunowsir-theme", NULL};
 static const char *termcmd[]            = { "st", NULL };
 static const char *changelightupcmd[]   = { "xbacklight", "-inc", "10", NULL };
 static const char *changelightdowncmd[] = { "xbacklight", "-dec", "10", NULL };
@@ -159,7 +161,7 @@ Key keys[] = {
 	/* modifier            key                      function        argument */
 
     /* 启动dmenu */
-	{ MODKEY,              XK_space,                spawn,          {.v = dmenucmd } },
+	{ MODKEY,              XK_space,                spawn,          {.v = roficmd } },
 
     /* 启动 st终端 */
 	{ MODKEY,              XK_Return,               spawn,          {.v = termcmd } },
