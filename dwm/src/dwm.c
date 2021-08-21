@@ -1614,6 +1614,8 @@ tagtoleft(const Arg *arg) {
 		focus(NULL);
 		arrange(selmon);
 	}
+
+    viewtoleft(arg);
 }
 
 void
@@ -1625,6 +1627,8 @@ tagtoright(const Arg *arg) {
 		focus(NULL);
 		arrange(selmon);
 	}
+
+    viewtoright(arg);
 }
 
 int
@@ -1912,6 +1916,7 @@ tagmon(const Arg *arg)
 {
 	if (!selmon->sel || !mons->next)
 		return;
+    /* 发送当前聚焦窗口到指定显示器 */
 	sendmon(selmon->sel, dirtomon(arg->i));
 }
 

@@ -160,7 +160,7 @@ static const char *suspendcmd[]     = { "/home/sunowsir/.config/autostart.dwm/fu
 Key keys[] = {
 	/* modifier            key                      function        argument */
 
-    /* 启动dmenu */
+    /* 启动rofi */
 	{ MODKEY,              XK_space,                spawn,          {.v = roficmd } },
 
     /* 启动 st终端 */
@@ -195,18 +195,22 @@ Key keys[] = {
 	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
 	{ MODKEY,              XK_k,                    focusstack,     {.i = -1 } },
 
-
-    /* 切换当前聚焦的监视器 */
-	{ MODKEY|ControlMask,  XK_j,                    focusmon,       {.i = -1} },
-	{ MODKEY|ControlMask,  XK_k,                    focusmon,       {.i = +1} },
-
     /* 切换桌面*/
 	{ MODKEY,              XK_h,                    viewtoleft,     {0} },
 	{ MODKEY,              XK_l,                    viewtoright,    {0} },
 
-    /* 移动窗口到上一个或下一个桌面*/
+    /* 移动窗口到左边的桌面 */
 	{ MODKEY|ShiftMask,    XK_h,                    tagtoleft,      {0} },
+    /* 移动窗口到右边的桌面 */
 	{ MODKEY|ShiftMask,    XK_l,                    tagtoright,     {0} },
+
+    /* 聚焦显示器 */
+	{ MODKEY,              XK_comma,                focusmon,       {.i = -1 } },
+	{ MODKEY,              XK_period,               focusmon,       {.i = +1 } },
+
+    /* 移动窗口到其他显示器 */
+	{ MODKEY|ShiftMask,    XK_comma,                tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,    XK_period,               tagmon,         {.i = +1 } },
 
     /* 调整窗口布局*/
 	{ MODKEY,              XK_t,                    incnmaster,     {.i = +1 } },

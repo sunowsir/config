@@ -145,7 +145,10 @@ void enternotify(XEvent *e);
 void expose(XEvent *e);
 void focus(Client *c);
 void focusin(XEvent *e);
+
+/* 聚焦显示器 */
 void focusmon(const Arg *arg);
+
 void focusstack(const Arg *arg);
 Atom getatomprop(Client *c, Atom prop);
 int getrootptr(int *x, int *y);
@@ -197,8 +200,13 @@ void spawn(const Arg *arg);
 Monitor *systraytomon(Monitor *m);
 void tag(const Arg *arg);
 void tagmon(const Arg *arg);
+
+/* 移动窗口到左边的桌面 */
 void tagtoleft(const Arg *arg);
+
+/* 移动窗口到右边的桌面 */
 void tagtoright(const Arg *arg);
+
 void tile(Monitor *);
 void togglebar(const Arg *arg);
 void togglefloating(const Arg *arg);
