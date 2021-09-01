@@ -148,6 +148,7 @@ static const char *changelightupcmd[]   = { "xbacklight", "-inc", "10", NULL };
 static const char *changelightdowncmd[] = { "xbacklight", "-dec", "10", NULL };
 static const char scratchpadname[]      = "scratchpad";
 static const char *scratchpadcmd[]      = { "st", "-t", scratchpadname, "-g", "80x24", NULL };
+static const char *screenshotfullcmd[]      = { "flameshot", "full", "-p", "/home/sunowsir/Pictures/1.Screenshots", NULL };
 static const char *screenshotcmd[]      = { "flameshot", "gui", NULL };
 
 static const char *upvol[]          = { "/home/sunowsir/.config/autostart.dwm/function/dwm_vol_setup.sh", "up", NULL };
@@ -156,6 +157,7 @@ static const char *mutevol[]        = { "/home/sunowsir/.config/autostart.dwm/fu
 static const char *wpcmd[]          = { "/home/sunowsir/.config/autostart.dwm/function/wp-change.sh", NULL };
 static const char *sktogglecmd[]    = { "/home/sunowsir/.config/autostart.dwm/function/sck-tog.sh", NULL };
 static const char *suspendcmd[]     = { "/home/sunowsir/.config/autostart.dwm/function/suspend.sh", NULL };
+static const char *playerctlcmd[]   = { "/home/sunowsir/.config/autostart.dwm/function/dwm_playerctl.sh", NULL };
 
 Key keys[] = {
 	/* modifier            key                      function        argument */
@@ -178,12 +180,16 @@ Key keys[] = {
 	{ 0,                   XF86XK_AudioRaiseVolume, spawn,          {.v = upvol   } },
 	{ 0,                   XF86XK_MonBrightnessUp,  spawn,          {.v = changelightupcmd } },
 	{ 0,                   XF86XK_MonBrightnessDown,spawn,          {.v = changelightdowncmd } },
+	{ 0,                   XF86XK_AudioPlay,spawn,          {.v = playerctlcmd } },
+	{ 0,                   XF86XK_AudioPause,spawn,          {.v = playerctlcmd } },
+
 
     /* 切换壁纸 */
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
 
     /* 截屏 */
-	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
+	{ 0,                   XK_Print,                spawn,          {.v = screenshotfullcmd } },
+	{ MODKEY|ShiftMask,    XK_Print,                spawn,          {.v = screenshotcmd } },
 
     /* 调整当前窗口优先级 */
 	{ MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } },
