@@ -47,7 +47,7 @@ dwm_transmission () {
     local vel_trans="$(get_velocity "$transmitted_bytes" "$cache_transmitted_bytes")"
 
     if [ "$IDENTIFIER" = "unicode" ]; then
-        printf " %s  %s" "${vel_recv}" "${vel_trans}"
+        printf " %s  %s" "${vel_recv}" "${vel_trans}"
     else
         printf "Dow %s Up %s" "${vel_recv}" "${vel_trans}"
     fi
