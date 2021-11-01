@@ -12,13 +12,13 @@ dwm_alsa () {
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
         if [ "$VOL" -eq 0 ] || [ "${STATUS}" = "off" ]; then
-            printf "婢"
+            printf ""
         elif [ "$VOL" -gt 0 ] && [ "$VOL" -le 33 ]; then
-            printf "奄%3s%%" "$VOL"
+            printf "%3s%%" "$VOL"
         elif [ "$VOL" -gt 33 ] && [ "$VOL" -le 66 ]; then
-            printf "奔%3s%%" "$VOL"
+            printf "%3s%%" "$VOL"
         else
-            printf "墳%3s%%" "$VOL"
+            printf "%3s%%" "$VOL"
         fi
     else
         if [ "$VOL" -eq 0 ] || [ "${STATUS}" = "off" ]; then
