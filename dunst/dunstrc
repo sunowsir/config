@@ -61,15 +61,18 @@
     padding = 14
 
     # Horizontal padding.
+    # 水平填充
     horizontal_padding = 8
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
+    # 定义通知窗口周围帧的宽度（以像素为单位）。
+    # 设置为 0 以禁用。
     frame_width = 0
 
     # Defines color of the frame around the notification window.
     # 两个通知窗口之间的间隙的颜色
-    frame_color = "#aaaaaa"
+    frame_color = "#282a36"
 
     # Define a color for the separator.
     # possible values are:
@@ -77,9 +80,16 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
+    # 定义分隔符的颜色。
+    # 可能的值是：
+    #  * auto：dunst 试图找到适合背景的颜色；
+    #  * foreground：使用与前景相同的颜色；
+    #  * frame：使用与框架相同的颜色；
+    #  * 其他任何东西都将被解释为 X 颜色。   #  * anything else will be interpreted as a X color.
     separator_color = frame
 
     # Sort messages by urgency.
+    # 按紧急程度对消息进行排序。
     sort = yes
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
