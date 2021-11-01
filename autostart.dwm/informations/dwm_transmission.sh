@@ -33,9 +33,9 @@ function get_velocity {
 
 	if test "$velKB" -gt 1024
 	then
-		echo $(echo "scale=2; $velKB/1024" | bc)MB/s
+	    printf "%3dMB/s" "$(echo "scale=2; $velKB/1024" | bc)"
 	else
-		echo ${velKB}KB/s
+	    printf "%.2fKB/s" "${velKB}"
 	fi
 }
 

@@ -9,7 +9,7 @@
 # Change the array to setting dwm status bar information.
 DWMBAR_DATA=(
     "$(dwm_memory)"
-    "$(dwm_transmission)"
+    # "$(dwm_transmission)"
     "$(dwm_alsa)"
     "$(dwm_battery)"
     "$(dwm_date)"

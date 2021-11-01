@@ -32,7 +32,7 @@ dwm_battery () {
         fi
     fi
 
-    echo -en "${battery_logo[${logo_idx}]} ${CHARGE:?}%"
+    printf "%s%3d%%" "${battery_logo[${logo_idx}]}" "${CHARGE:?}"
     return "${?}"
 }
 

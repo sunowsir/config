@@ -14,21 +14,21 @@ dwm_alsa () {
         if [ "$VOL" -eq 0 ] || [ "${STATUS}" = "off" ]; then
             printf "婢"
         elif [ "$VOL" -gt 0 ] && [ "$VOL" -le 33 ]; then
-            printf "奄 %s%%" "$VOL"
+            printf "奄%3s%%" "$VOL"
         elif [ "$VOL" -gt 33 ] && [ "$VOL" -le 66 ]; then
-            printf "奔 %s%%" "$VOL"
+            printf "奔%3s%%" "$VOL"
         else
-            printf "墳 %s%%" "$VOL"
+            printf "墳%3s%%" "$VOL"
         fi
     else
         if [ "$VOL" -eq 0 ] || [ "${STATUS}" = "off" ]; then
             printf "MUTE"
         elif [ "$VOL" -gt 0 ] && [ "$VOL" -le 33 ]; then
-            printf "VOL %s%%" "$VOL"
+            printf "VOL %3s%%" "$VOL"
         elif [ "$VOL" -gt 33 ] && [ "$VOL" -le 66 ]; then
-            printf "VOL %s%%" "$VOL"
+            printf "VOL %3s%%" "$VOL"
         else
-            printf "VOL %s%%" "$VOL"
+            printf "VOL %3s%%" "$VOL"
         fi
     fi
     printf "%s\n" "$SEP2"

@@ -17,7 +17,6 @@ function DWMBAR_THEME_Main_Handle() {
         status_bar_str="${status_bar_str}$(DWMBAR_THEME_Rendering "${!i}")"
     done
 
-    # xsetroot -name "$(printf ' %.0s\r' {1..1000})${status_bar_str}"
-    xsetroot -name "${status_bar_str}"
+    xsetroot -name "$(printf "%s" "${status_bar_str}")"
     return ${?}
 }
