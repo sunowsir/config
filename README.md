@@ -7,7 +7,7 @@
 * my install: 
     * `nvim` (about nvim config, go to my vim config.)
     * `fcitx5`
-    * `picom`
+    * `picom-ibhagwan-git`
     * `unzip`
     * `xclip`
     * `ctags`
