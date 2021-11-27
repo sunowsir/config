@@ -2514,18 +2514,14 @@ updatesystrayiconstate(Client *i, XPropertyEvent *ev)
 			systray->win, XEMBED_EMBEDDED_VERSION);
 }
 
+
+
 void
 updatesystray(void)
 {
 	XSetWindowAttributes wa;
-    
-	wa.border_pixel = 0,
-	// wa.colormap = cmap,
-	wa.override_redirect = True,
-    wa.colormap = XCreateColormap(dpy, root, visual, AllocNone);
-	wa.event_mask        = ButtonPressMask | ExposureMask;
-    wa.background_pixel  = scheme[SchemeSel][ColBg].pixel;
-
+	XWindowChanges wc;
+	Client *i;
 	Monitor *m = systraytomon(NULL);
 	unsigned int x = m->mx + m->mw;
 	unsigned int w = 1;
@@ -2535,34 +2531,31 @@ updatesystray(void)
 	if (!systray) {
 		/* init systray */
 		if (!(systray = (Systray *)calloc(1, sizeof(Systray))))
-			die("fatal: could not calloc() %u bytes\n", sizeof(Systray));
-
-
+			die("fatal: could not malloc() %u bytes\n", sizeof(Systray));
 		systray->win = XCreateSimpleWindow(dpy, root, x, m->by, w, bh, 0, 0, scheme[SchemeSel][ColBg].pixel);
-
+		wa.event_mask        = ButtonPressMask | ExposureMask;
+		wa.override_redirect = True;
+		wa.background_pixel  = scheme[SchemeNorm][ColBg].pixel;
 		XSelectInput(dpy, systray->win, SubstructureNotifyMask);
 		XChangeProperty(dpy, systray->win, netatom[NetSystemTrayOrientation], XA_CARDINAL, 32,
 				PropModeReplace, (unsigned char *)&netatom[NetSystemTrayOrientationHorz], 1);
-
 		XChangeWindowAttributes(dpy, systray->win, CWEventMask|CWOverrideRedirect|CWBackPixel, &wa);
 		XMapRaised(dpy, systray->win);
 		XSetSelectionOwner(dpy, netatom[NetSystemTray], systray->win, CurrentTime);
-
-		if (XGetSelectionOwner(dpy, netatom[NetSystemTray]) != systray->win) {
+		if (XGetSelectionOwner(dpy, netatom[NetSystemTray]) == systray->win) {
+			sendevent(root, xatom[Manager], StructureNotifyMask, CurrentTime, netatom[NetSystemTray], systray->win, 0, 0);
+			XSync(dpy, False);
+		}
+		else {
 			fprintf(stderr, "dwm: unable to obtain system tray.\n");
 			free(systray);
 			systray = NULL;
 			return;
 		}
-
-		sendevent(root, xatom[Manager], StructureNotifyMask, CurrentTime, netatom[NetSystemTray], systray->win, 0, 0);
-		XSync(dpy, False);
 	}
-
-	Client *i = systray->icons;
-	for (w = 0; i; i = i->next) {
+	for (w = 0, i = systray->icons; i; i = i->next) {
 		/* make sure the background color stays the same */
-		wa.background_pixel  =  scheme[SchemeSel][ColBg].pixel;
+		wa.background_pixel  = scheme[SchemeNorm][ColBg].pixel;
 		XChangeWindowAttributes(dpy, i->win, CWBackPixel, &wa);
 		XMapRaised(dpy, i->win);
 		w += systrayspacing;
@@ -2575,24 +2568,97 @@ updatesystray(void)
 	w = w ? w + systrayspacing : 1;
 	x -= w;
 	XMoveResizeWindow(dpy, systray->win, x, m->by, w, bh);
-
-	XWindowChanges wc;
-	wc.x = x; 
-    wc.y = m->by; 
-    wc.width = w; 
-    wc.height = bh;
-	wc.stack_mode = Above; 
-    wc.sibling = m->barwin;
+	wc.x = x; wc.y = m->by; wc.width = w; wc.height = bh;
+	wc.stack_mode = Above; wc.sibling = m->barwin;
 	XConfigureWindow(dpy, systray->win, CWX|CWY|CWWidth|CWHeight|CWSibling|CWStackMode, &wc);
-
 	XMapWindow(dpy, systray->win);
 	XMapSubwindows(dpy, systray->win);
-
 	/* redraw background */
-	XSetForeground(dpy, drw->gc, scheme[SchemeSel][ColBg].pixel);
+	XSetForeground(dpy, drw->gc, scheme[SchemeNorm][ColBg].pixel);
 	XFillRectangle(dpy, systray->win, XCreateGC(dpy, root, 0 , NULL), 0, 0, w, bh);
 	XSync(dpy, False);
-}
+ }
+
+
+// void
+// updatesystray(void)
+// {
+// 	XSetWindowAttributes wa;
+//     
+// 	wa.border_pixel = 0,
+// 	// wa.colormap = cmap,
+// 	wa.override_redirect = True,
+//     wa.colormap = XCreateColormap(dpy, root, visual, AllocNone);
+// 	wa.event_mask        = ButtonPressMask | ExposureMask;
+//     wa.background_pixel  = scheme[SchemeSel][ColBg].pixel;
+// 
+// 	Monitor *m = systraytomon(NULL);
+// 	unsigned int x = m->mx + m->mw;
+// 	unsigned int w = 1;
+// 
+// 	if (!showsystray)
+// 		return;
+// 	if (!systray) {
+// 		/* init systray */
+// 		if (!(systray = (Systray *)calloc(1, sizeof(Systray))))
+// 			die("fatal: could not calloc() %u bytes\n", sizeof(Systray));
+// 
+// 
+// 		systray->win = XCreateSimpleWindow(dpy, root, x, m->by, w, bh, 0, 0, scheme[SchemeSel][ColBg].pixel);
+// 
+// 		XSelectInput(dpy, systray->win, SubstructureNotifyMask);
+// 		XChangeProperty(dpy, systray->win, netatom[NetSystemTrayOrientation], XA_CARDINAL, 32,
+// 				PropModeReplace, (unsigned char *)&netatom[NetSystemTrayOrientationHorz], 1);
+// 
+// 		XChangeWindowAttributes(dpy, systray->win, CWEventMask|CWOverrideRedirect|CWBackPixel, &wa);
+// 		XMapRaised(dpy, systray->win);
+// 		XSetSelectionOwner(dpy, netatom[NetSystemTray], systray->win, CurrentTime);
+// 
+// 		if (XGetSelectionOwner(dpy, netatom[NetSystemTray]) != systray->win) {
+// 			fprintf(stderr, "dwm: unable to obtain system tray.\n");
+// 			free(systray);
+// 			systray = NULL;
+// 			return;
+// 		}
+// 
+// 		sendevent(root, xatom[Manager], StructureNotifyMask, CurrentTime, netatom[NetSystemTray], systray->win, 0, 0);
+// 		XSync(dpy, False);
+// 	}
+// 
+// 	Client *i = systray->icons;
+// 	for (w = 0; i; i = i->next) {
+// 		/* make sure the background color stays the same */
+// 		wa.background_pixel  =  scheme[SchemeSel][ColBg].pixel;
+// 		XChangeWindowAttributes(dpy, i->win, CWBackPixel, &wa);
+// 		XMapRaised(dpy, i->win);
+// 		w += systrayspacing;
+// 		i->x = w;
+// 		XMoveResizeWindow(dpy, i->win, i->x, 0, i->w, i->h);
+// 		w += i->w;
+// 		if (i->mon != m)
+// 			i->mon = m;
+// 	}
+// 	w = w ? w + systrayspacing : 1;
+// 	x -= w;
+// 	XMoveResizeWindow(dpy, systray->win, x, m->by, w, bh);
+// 
+// 	XWindowChanges wc;
+// 	wc.x = x; 
+//     wc.y = m->by; 
+//     wc.width = w; 
+//     wc.height = bh;
+// 	wc.stack_mode = Above; 
+//     wc.sibling = m->barwin;
+// 	XConfigureWindow(dpy, systray->win, CWX|CWY|CWWidth|CWHeight|CWSibling|CWStackMode, &wc);
+// 
+// 	XMapWindow(dpy, systray->win);
+// 	XMapSubwindows(dpy, systray->win);
+// 
+// 	/* redraw background */
+// 	XSetForeground(dpy, drw->gc, scheme[SchemeSel][ColBg].pixel);
+// 	XFillRectangle(dpy, systray->win, XCreateGC(dpy, root, 0 , NULL), 0, 0, w, bh);
+// 	XSync(dpy, False);
+// }
 
 void
 updatetitle(Client *c)
