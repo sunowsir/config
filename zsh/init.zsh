@@ -1,7 +1,7 @@
-source "${HOME}/.config/zsh/source.zsh"
-
-source "${HOME}/.config/zsh/persional.config.zsh"
-source "${HOME}/.config/zsh/fzf.config.zsh"
-source "${HOME}/.config/zsh/nvm.config.zsh"
-source "${HOME}/.config/zsh/zinit.config.zsh"
-
+source "${ZSH_CONFIG_DIR}/fzf.config.zsh"
+source "${ZSH_CONFIG_DIR}/nvm.config.zsh"
+# source "${ZSH_CONFIG_DIR}/zinit.config.zsh"
+source "${ZSH_CONFIG_DIR}/antigen.config.zsh"
+source "${ZSH_CONFIG_DIR}/proxy.config.zsh"
+source "${ZSH_CONFIG_DIR}/golang.config.zsh"
+source "${ZSH_CONFIG_DIR}/persional.config.zsh"
